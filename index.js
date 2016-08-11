@@ -37,6 +37,8 @@ function viewCart(){
 
 function removeFromCart(item) {
 
+var checker = false
+
   for (let i = 0, l = cart.length; i < l; i++) {
 
     let checker = cart[i].hasOwnProperty(item)
@@ -44,10 +46,10 @@ function removeFromCart(item) {
     if (checker == true) {
       cart.splice(i , 1);
     }
+  }
 
-    if (checker == false){
-      console.log ('That item is not in your cart.')
-    }
+  if (checker == false){
+    console.log ('That item is not in your cart.')
   }
   return cart;
 }
