@@ -24,7 +24,20 @@ function addToCart(item){
   var price = Math.floor(Math.random()*100);
   var list = {item: price};
   cart.push(list);
-  var update = `${item} has been added to the cart.`;
-  console.log(update);
+  console.log(`${item} has been added to your cart.`);
   return cart;
+}
+
+function viewCart(){
+  if (cart.length === 0){
+    console.log("Your shopping cart is empty.")
+  } else {
+    var sent = "In your cart, you have ";
+    for (var i = 0; i < cart.length; i++){
+      for (var item in cart[i]){
+        sent += `${item} at $${cart[i][item]}${i !== cart.length-1 ? ', ' : '.'}`;
+      }
+    }
+  }
+  console.log(sent);
 }
