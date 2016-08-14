@@ -16,32 +16,36 @@ function addToCart(item) {
 }
 
 function removeFromCart(item) {
-  var inCart = false
-  var itemIndex = 0
+  let inCart = false
 
   for (let i = 0, l = cart.length; i < l; i++) {
     if (cart[i].hasOwnProperty(item)) {
       inCart = true
-      itemIndex = i
+      cart.splice(i, 1)
     }
   }
 
-  return inCart ? cart.splice(itemIndex, 1) : console.log('That item is not in your cart.')
+  if (!inCart) {
+    console.log('That item is not in your cart.')
+  }
+
+  return cart
 }
 
 function viewCart() {
-  var itemsList = []
+  //only one call to .length
+  const l = cart.length
 
-  if (!cart.length) {
+  if (!l) {
     return console.log("Your shopping cart is empty.")
   }
 
-  for (let i = 0, l = cart.length; i < l; i++) {
+  var itemsList = []
 
+  for (let i = 0; i < l; i++) {
     for (var item in cart[i]) {
       itemsList.push(`${[item]} at $${cart[i][item]}`)
     }
-
   }
 
   return console.log(`In your cart, you have ${itemsList.join(', ')}.`)
