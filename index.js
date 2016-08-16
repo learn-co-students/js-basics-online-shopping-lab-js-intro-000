@@ -37,17 +37,14 @@ function viewCart(){
 		}
 		else{
 			for(var i = 0; i < cart.length; i++){
+				var array=[]
 				for(var key in cart[i]){
 						//define string with item and price in them
 						var string = "In your cart you have "+ cart[i] + "at" + cart[i][key] + ".";
-						//define empty array
-						var array = [];
-						//add string to array
-						array.push(string);
-					}	
-					//return array
+						var array = [string, ...array];
+					}
+					console.log(array);
 			}
-			return array;
 		}
 }
 function removeFromCart(item){
