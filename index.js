@@ -43,17 +43,16 @@ for (var mealName in meals) {
 }
 */
 	var items = Object.keys(cart);
-	var price = 10;
 		if(cart.length === 0){
 			console.log("Your shopping cart is empty.");
 		}
 		else{
 			for(var items in cart){
-				for(var i = 0;i < cart.length;i++){
-				console.log("In your cart you have "+ cart[items[i]] + "at" + cart[price] + ".");
+					for(var i = 0;i<cart.length;i++){
+				console.log("In your cart you have "+ items[i] + "at" + items[i][i] + ".");
 				}	
-			}
 		}
+	}
 }
 function removeFromCart(item){
 	//if item not in cart, then print out 'That item is not in your cart'
@@ -61,7 +60,7 @@ function removeFromCart(item){
 	//if item in cart, remove item from cart array
 	
 	//then return cart
-	return card;
+	return cart;
 	//HINT: Check each object's key to see if it matches the parameter, 
 	//then remove it if it matches. You might find hasOwnProperty to be useful.) 
 }
