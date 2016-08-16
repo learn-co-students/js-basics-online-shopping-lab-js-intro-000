@@ -47,12 +47,19 @@ for (var mealName in meals) {
 			console.log("Your shopping cart is empty.");
 		}
 		else{
-			for(var items in cart){
-					for(var i = 0;i<cart.length;i++){
-				console.log("In your cart you have "+ items[i] + "at" + items[i][i] + ".");
-				}	
+			for(var i = 0;i < cart.length;i++){
+				for(var key in cart){
+						//define string with item and price in them
+						var string = "In your cart you have "+ cart[i] + "at" + cart[i][key] + ".";
+						//define empty array
+						var array = [];
+						//add string to array
+						array.push(string);
+					}	
+					//return array
+				return array;
+			}
 		}
-	}
 }
 function removeFromCart(item){
 	//if item not in cart, then print out 'That item is not in your cart'
