@@ -42,7 +42,7 @@ function viewCart(){
 						//define string with item and price in them
 						var array = [cart[i] +"at"+cart[i][key],...array];
 					}
-					console.log("In your cart you have "+ array + ".");
+					console.log("In your cart you have ${array.join(", ")}.");
 			}
 		}
 }
