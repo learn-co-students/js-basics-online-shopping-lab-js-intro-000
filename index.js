@@ -5,7 +5,7 @@ function setCart(newCart) {
 }
 
 function total() {
-  let t = 0
+  var t = 0
 
   for (var i = 0, l = cart.length; i < l; i++) {
     for (var item in cart[i]) {
@@ -29,6 +29,7 @@ function addToCart(item){
 	return cart;
 	
 }
+
 function viewCart(){
 	//define item variablevar mealNames = Object.keys(meals)
  /* var mealNames = Object.keys(meals)
@@ -42,16 +43,17 @@ for (var mealName in meals) {
 }
 */
 	var items = Object.keys(cart);
+	var price = 10;
 		if(cart.length === 0){
 			console.log("Your shopping cart is empty.");
 		}
 		else{
 			for(var items in cart){
-			for(var i =0;i< cart.length;i++){
-			console.log("In your cart you have "+ cart[i] + "at" + items + ".");
-			}	
+				for(var i = 0;i < cart.length;i++){
+				console.log("In your cart you have "+ cart[items[i]] + "at" + cart[price] + ".");
+				}	
+			}
 		}
-	}
 }
 function removeFromCart(item){
 	//if item not in cart, then print out 'That item is not in your cart'
