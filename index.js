@@ -40,10 +40,9 @@ function viewCart(){
 				var array=[]
 				for(var key in cart[i]){
 						//define string with item and price in them
-						var string = "In your cart you have "+ cart[i] + "at" + cart[i][key] + ".";
-						var array = [string, ...array];
+						var array = [cart[i], cart[i][key]];
 					}
-					console.log(array);
+					console.log("In your cart you have "+ array + ".");
 			}
 		}
 }
