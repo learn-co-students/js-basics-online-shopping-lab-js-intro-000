@@ -37,7 +37,7 @@ function viewCart(){
 		}
 		else{
 			for(var i = 0; i < cart.length; i++){
-				for(var key in cart){
+				for(var key in cart[i]){
 						//define string with item and price in them
 						var string = "In your cart you have "+ cart[i] + "at" + cart[i][key] + ".";
 						//define empty array
