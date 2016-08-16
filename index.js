@@ -31,23 +31,12 @@ function addToCart(item){
 }
 
 function viewCart(){
-	//define item variablevar mealNames = Object.keys(meals)
- /* var mealNames = Object.keys(meals)
-
-for (var i = 0, l = mealNames.length; i < l; i++) {
-  console.log(`I ate ${meals[mealNames[i]]} for ${mealNames[i]}!`)
-}
-
-for (var mealName in meals) {
-  console.log(`I ate ${meals[mealName]} for ${mealName}!`)
-}
-*/
 	var items = Object.keys(cart);
 		if(cart.length === 0){
 			console.log("Your shopping cart is empty.");
 		}
 		else{
-			for(var i = 0;i < cart.length;i++){
+			for(var i = 0; i < cart.length; i++){
 				for(var key in cart){
 						//define string with item and price in them
 						var string = "In your cart you have "+ cart[i] + "at" + cart[i][key] + ".";
@@ -57,8 +46,8 @@ for (var mealName in meals) {
 						array.push(string);
 					}	
 					//return array
-				return array;
 			}
+			return array;
 		}
 }
 function removeFromCart(item){
