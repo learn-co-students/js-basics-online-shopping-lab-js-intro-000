@@ -40,7 +40,7 @@ function viewCart(){
 			var key = Object.keys(cart[i])[0];
 			for(var i = 0; i < cart.length; i++){
 						//define string with item and price in them
-				array.push([cart[i] +" at "+ cart[i][key],...array]);
+				array.push([cart[i] +" at "+ cart[i][key]]);
 				console.log("In your cart you have ${array.join(", ")}.");
 			}
 		}
