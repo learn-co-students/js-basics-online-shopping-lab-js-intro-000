@@ -45,45 +45,37 @@ function viewCart(){
 		}
 }
 function removeFromCart(item){
-	//if item not in cart, then print out 'That item is not in your cart'
-	//get all items in cart
-
-
-	// var items = Object.keys(cart); 
-		//if cart does not have item in it:
-			/* if (cart.hasOwnProperty(item) === false){
-				console.log(`That is not in your cart.`);
-			} */
-			//if cart has item in it
-
-		 	for (var items in cart){ //for items are in the cart 
-		 		for (var i = 0; i < items.length; i++){ //intialize counter through items
-		 				if (items.hasOwnProperty(item) === true){ //if the items have item in it
-				 			cart.splice(i,1);  //delete item at i index in cart array
-							console.log(cart); //print out cart
-							}
-		 				
-						else{
-							console.log(`That is not your cart.`);
-						}
-		 			}
+		 		if (cart.length === 0){
+		 			console.log(`That item is not in your cart.`);
 		 		}
-				// console.log(`That ${item} is in your cart. It costs $${cart[item]}.`);
-				// Need to find where item is in the object
-				// convert item from string to key? 
-				// find index of the item in items?
-				 //returned new array to how deleted item
-}
-removeFromCart("pizza");
+		 		else{
+			 		for (var i = 0; i < cart.length; i++){ //intialize counter through items
+			 			var currentItem = cart[i];
+			 			if (currentItem.hasOwnProperty(item) === true){ //if the items have item in it
+					 			cart.splice(i,1);  //delete item at i index in cart array
+							}
+						else{
+							console.log(`That item is not in your cart.`);
+						}
+			 		}
+			 	}
+			 	return cart;
 
-/*function placeOrder(cardNumber){
-	if (cardNumber === null || cardNumber === undefined){
-		console.log("We don\'t have your credit card on file for you to place your order.")
-	}
-	else{
-		console.log('Your total cost is $${total()}, which will be charged on the card ${cardNumber}.')
-	}
-	//if no arg received, print out 'We don't have your credit card on file for you to place your order.'
-	//if cc on file, then print out "Your total cost is $${total()}, which will be charged to the card ${cardNumber}."
 }
-*/
+
+function placeOrder(cardNumber){
+	//if no cardNumber received or a cardNumber is not a number
+	if (isNaN(cardNumber) === true){
+		//print out this statement
+		console.log("We don\'t have a credit card on file for you to place your order.");
+	}
+	else{ //if there is a cardNumber
+		//print the following statement
+		console.log(`Your total cost is $${total()}, which will be charged to the card ${cardNumber}.`);
+		//empty cart with loop below
+		for (var i = 0; i <= cart.length;i++){
+			var currentItem = cart[i]; //current item defined
+			cart.splice(i); //current item deleted from array
+		}	
+	}
+}
