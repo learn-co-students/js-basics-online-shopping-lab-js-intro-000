@@ -39,20 +39,25 @@ function viewCart(){
 			var array=[];
 			for(var i = 0; i < cart.length; i++){
 				var key = Object.keys(cart[i])[0];
-				array.push(key +" at "+ cart[i][key]);
+				array.push(`${key} at \$${cart[i][key]}`);
 			}
-			console.log("In your cart you have ${array.join(", ")}.");
+			console.log(`In your cart you have ${array.join(", ")}.`);
 		}
 }
 function removeFromCart(item){
 	//if item not in cart, then print out 'That item is not in your cart'
-
+	/*if (item != ){
+		console.log("That item is not in your cart");
+	}
 	//if item in cart, remove item from cart array
-	
-	//then return cart
-	return cart;
+	//for ( in cart){
+		//remove item from cart array
+		cart.slice(item);
+		//then return cart
+		return cart;
+	}
 	//HINT: Check each object's key to see if it matches the parameter, 
-	//then remove it if it matches. You might find hasOwnProperty to be useful.) 
+	//then remove it if it matches. You might find hasOwnProperty to be useful.)*/ 
 }
 
 function placeOrder(cardNumber){
