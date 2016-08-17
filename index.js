@@ -56,11 +56,11 @@ function removeFromCart(item){
 			} */
 			//if cart has item in it
 
-		 	for (var items in cart){
-		 		for (var i = 0; i < items.length; i++){
-		 				if (cart.hasOwnProperty(item) === true){
-				 			cart.splice(i,1); 
-							console.log(cart); 
+		 	for (var items in cart){ //for items are in the cart 
+		 		for (var i = 0; i < items.length; i++){ //intialize counter through items
+		 				if (items.hasOwnProperty(item) === true){ //if the items have item in it
+				 			cart.splice(i,1);  //delete item at i index in cart array
+							console.log(cart); //print out cart
 							}
 		 				
 						else{
