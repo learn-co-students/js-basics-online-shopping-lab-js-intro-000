@@ -29,7 +29,7 @@ function addToCart(item)
   price= Math.floor(price)
 
   var myCart = getCart()
-  entry{item}=price
+  entry[item]=price
   myCart.push(entry)
   console.log(item +" has been added to your cart.")
   return myCart
@@ -56,7 +56,7 @@ function addToCart(item)
       for (item in myCart[i])
         {
           //console.log(item)
-          list = list + itemNames[i] + " at " + myCart[i][item]+ (i=myCart.length)?("."):(",")
+          list = list + itemNames[i] + " at " + myCart[i][item]+ (i<myCart.length-1)?(","):(".")
           //console.log(item)
         }
       }
