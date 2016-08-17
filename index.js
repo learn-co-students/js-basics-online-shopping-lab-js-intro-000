@@ -56,7 +56,7 @@ function addToCart(item)
       for (item in myCart[i])
         {
           //console.log(item)
-          list = list + itemNames[i] + " at " + myCart[i][item]+ (i=myCart.Length)?("."):(",")
+          list = list + itemNames[i] + " at " + myCart[i][item]+ (i=myCart.length)?("."):(",")
           //console.log(item)
         }
       }
