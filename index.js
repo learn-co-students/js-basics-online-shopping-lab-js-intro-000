@@ -21,10 +21,11 @@ function getCart()
 {
   return cart
 }
-var entry={}
-var itemNames=[]
+
 function addToCart(item)
 {
+  var entry={}
+
   var price=Math.random()*100
   price= Math.floor(price)
 
@@ -56,7 +57,7 @@ function addToCart(item)
       for (item in myCart[i])
         {
           //console.log(item)
-          list = list + itemNames[i] + " at " + myCart[i][item]+ (i<myCart.length-1)?(","):(".")
+          list = list + item + " at " + myCart[i][item]+ ((i<myCart.length-1)?(","):("."))
           //console.log(item)
         }
       }
