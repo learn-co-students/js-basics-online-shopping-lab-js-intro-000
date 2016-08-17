@@ -48,31 +48,33 @@ function removeFromCart(item){
 	//if item not in cart, then print out 'That item is not in your cart'
 	//get all items in cart
 
-	var cart ={
-		pizza: '63', //don't forget commas
-	//adding more key-value pairs
-		calamari: '75',
-		mushrooms: '10',
-		steak: '45'
-	}
-	var items = Object.keys(cart); 
+
+	// var items = Object.keys(cart); 
 		//if cart does not have item in it:
-			if (cart.hasOwnProperty(item) === false){
+			/* if (cart.hasOwnProperty(item) === false){
 				console.log(`That is not in your cart.`);
-			}
+			} */
 			//if cart has item in it
-		 	else if (cart.hasOwnProperty(item) === true){
+
+		 	for (var items in cart){
+		 		for (var i = 0; i < items.length; i++){
+		 				if (cart.hasOwnProperty(item) === true){
+				 			cart.splice(i,1); 
+							console.log(cart); 
+							}
+		 				
+						else{
+							console.log(`That is not in ${cart[i]}.`);
+						}
+		 			}
+		 		}
 				// console.log(`That ${item} is in your cart. It costs $${cart[item]}.`);
 				// Need to find where item is in the object
 				// convert item from string to key? 
-				// find index of the item in items
-				delete cart["item"];
-				console.log(cart); //returned new array to how deleted item
-			}
+				// find index of the item in items?
+				 //returned new array to how deleted item
 }
-
 removeFromCart("pizza");
-removeFromCart('iPhone');
 
 /*function placeOrder(cardNumber){
 	if (cardNumber === null || cardNumber === undefined){
