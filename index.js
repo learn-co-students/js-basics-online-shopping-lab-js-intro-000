@@ -33,6 +33,7 @@ function addToCart(item)
   entry[item]=price
   myCart.push(entry)
   console.log(item +" has been added to your cart.")
+  setCart( myCart)
   return myCart
 }
   function viewCart()
@@ -49,7 +50,7 @@ function addToCart(item)
     var l
     var list = "In your cart, you have "
 
-    for (i=0, l = myCart.length-1;i<l;i++)
+    for (i=0, l = myCart.length;i<l;i++)
     {
       var item = Object.keys(myCart[i])[0]
       console.log(item)
@@ -57,12 +58,36 @@ function addToCart(item)
       for (item in myCart[i])
         {
           //console.log(item)
-          list = list + item + " at " + myCart[i][item]+ ((i<myCart.length-1)?(","):("."))
+          list = list + item + " at $" + myCart[i][item]+ ((i<myCart.length-1)?(", "):("."))
           //console.log(item)
         }
       }
     }
     console.log(list)
     return
+
+}
+  function removeFromCart(order)
+  {
+    var myCart = getCart()
+    for (var i=0, l = myCart.length;i<l;i++)
+    {
+      var item = Object.keys(myCart[i])[0]
+      console.log(item)
+
+      for (item in myCart[i])
+      {
+        if(order==item)
+        var newCart
+        newCart=[...myCart.slice(0,i-1),...myCart.slice(i+1)]//delete myCart[i]//[item]
+          setCart(newCart)
+          return
+        }
+      }
+  console.log("That item is not in your cart.")
+  return
+}
+function placeOrder(cardNumber)
+{
 
 }
