@@ -37,9 +37,8 @@ function viewCart(){
 		}
 		else{
 			var array=[];
-			var key = Object.keys(cart[i])[0];
 			for(var i = 0; i < cart.length; i++){
-						//define string with item and price in them
+				var key = Object.keys(cart[i])[0];
 				array.push([cart[i] +" at "+ cart[i][key]]);
 				console.log("In your cart you have ${array.join(", ")}.");
 			}
