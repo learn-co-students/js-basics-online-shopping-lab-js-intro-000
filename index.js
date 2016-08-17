@@ -39,9 +39,9 @@ function viewCart(){
 			var array=[];
 			for(var i = 0; i < cart.length; i++){
 				var key = Object.keys(cart[i])[0];
-				array.push([cart[i] +" at "+ cart[i][key]]);
-				console.log("In your cart you have ${array.join(", ")}.");
+				array.push(key +" at "+ cart[i][key]);
 			}
+			console.log("In your cart you have ${array.join(", ")}.");
 		}
 }
 function removeFromCart(item){
