@@ -64,7 +64,7 @@ function removeFromCart(item){
 							}
 		 				
 						else{
-							console.log(`That is not in ${cart[i]}.`);
+							console.log(`That is not your cart.`);
 						}
 		 			}
 		 		}
