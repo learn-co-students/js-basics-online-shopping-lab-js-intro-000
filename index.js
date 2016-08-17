@@ -20,9 +20,9 @@ function getCart(){
 }
 function addToCart(item){
 	//randomly prices item
-	var price = Math.floor(Math.random(0, 100));
+	var price = Math.floor(Math.random()*100);
 	//adding item & price to cart as object
-	cart.push({item: price});
+	cart.push({[item]: price});
 	//item has been added
 	console.log(item +" has been added to your cart.");
 	//return cart
@@ -36,13 +36,12 @@ function viewCart(){
 			console.log("Your shopping cart is empty.");
 		}
 		else{
+			var array=[];
+			var key = Object.keys(cart[i])[0];
 			for(var i = 0; i < cart.length; i++){
-				var array=[]
-				for(var key in cart[i]){
 						//define string with item and price in them
-						array.push([cart[i] +"at"+cart[i][key],...array]);
-					}
-					console.log("In your cart you have ${array.join(", ")}.");
+				array.push([cart[i] +" at "+ cart[i][key],...array]);
+				console.log("In your cart you have ${array.join(", ")}.");
 			}
 		}
 }
