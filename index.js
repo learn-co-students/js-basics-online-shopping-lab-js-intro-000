@@ -86,8 +86,12 @@ function addToCart(item)
       }
   console.log("That item is not in your cart.")
   return
-}
-function placeOrder(cardNumber)
+} function placeOrder(cardNumber)
 {
-
+  if(cardNumber == null)
+  {
+      console.log("We don't have a credit card on file for you to place your order." )
+      return
+  }
+  console.log(`Your total cost is $${total()}, which will be charged to the card ${cardNumber}.`)
 }
