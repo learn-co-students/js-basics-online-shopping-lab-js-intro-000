@@ -19,16 +19,22 @@ function viewCart(){
     console.log("Your shopping cart is empty.")
   }
   else{
-    var returnMess = "In your cart you have "
+    var returnMess = "In your cart, you have "
     //console.log(`In your cart you have `)
     //var itemNames = Object.keys(cart)
+    //console.log("zebra")
 
     for (var i=0; i<cart.length; i++){
+      var itemName = Object.keys(cart[i])
       if (i!= cart.length-1){
-        var itemName = Object.keys(cart[i])
+        //console.log("griafe")
+        //console.log(Object.keys(cart[i]))
+        //var itemName = Object.keys(cart[i])
+        //console.log(itemName[0])
         returnMess = returnMess.concat(`${itemName[0]} at \$${cart[i][itemName[0]]}, `)
       }
       else{
+      //  console.log(itemName[0])
         returnMess = returnMess.concat(`${itemName[0]} at \$${cart[i][itemName[0]]}.`)
       }
     }
