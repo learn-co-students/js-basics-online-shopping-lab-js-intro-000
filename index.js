@@ -8,7 +8,7 @@ function getCart(){
 
 function addToCart(item){
   var price = Math.floor((Math.random()*100))
-  cart.push({item: price})
+  cart.push({[item]: price})
   console.log(`${item} has been added to your cart.`)
   return cart
 }
@@ -19,18 +19,20 @@ function viewCart(){
     console.log("Your shopping cart is empty.")
   }
   else{
-    console.log(`In your cart you have `)
+    var returnMess = "In your cart you have "
+    //console.log(`In your cart you have `)
     //var itemNames = Object.keys(cart)
 
     for (var i=0; i<cart.length; i++){
       if (i!= cart.length-1){
         var itemName = Object.keys(cart[i])
-        console.log(`${itemName[0]} at \$${cart[i][itemName[0]]}, `)
+        returnMess = returnMess.concat(`${itemName[0]} at \$${cart[i][itemName[0]]}, `)
       }
       else{
-        console.log(`${itemName[0]} at \$${cart[i][itemName[0]]}.`)
+        returnMess = returnMess.concat(`${itemName[0]} at \$${cart[i][itemName[0]]}.`)
       }
     }
+    console.log(returnMess)
   }
 }
 
@@ -48,11 +50,11 @@ function removeFromCart(item){
 
 
 function placeOrder(cardNumber){
-  if(cardNumber === null){
+  if(cardNumber == null){
     console.log("We don't have a credit card on file for you to place your order.")
   }
   else{
-    console.log(`Your total cost is $${total()}, which will be charged to the card ${cardNumber}`)
+    console.log(`Your total cost is $${total()}, which will be charged to the card ${cardNumber}.`)
     cart.splice(0)
   }
 }
