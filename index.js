@@ -52,34 +52,42 @@ function total() {
   return t
 }
 
-var cart;
-cart = [];
-cart.push({socks: '9.99'});
-cart.push({shoes: '100'});
-//cart.push({dinner: 'spaghetti'});
-
 function removeFromCart(item) {
-  var obj;
-  var mess;
   var HasItem = "False";
 
   if (cart.length ===0)
-    mess = "Your shopping cart is empty";
+    console.log("Your shopping cart is empty");
   else
   {
-    mess = "In your cart, you have ";
+
     for (var i = 0, l = cart.length; i < l; i++) {
-      obj = cart[i];
-      for (var n in obj) {
-          if (n.hasOwnProperty(item) ) {
+        if (cart[i].hasOwnProperty(item)) {
+          HasItem = "True";
           cart.splice(i,1);
-            HasItem = "True"
-          }
         }
     }
-    if (HasItem === "False")
-      mess = "That item is not in your cart."
+
+      if (HasItem === "False")
+        console.log("That item is not in your cart.");
   }
-  console.log(mess)
-  return cart
+  if (HasItem === "False")
+    console.log("That item is not in your cart.");
+  return cart;
+}
+
+function placeOrder(cardNumber){
+
+  var mess = "test";
+  var t = 0;
+
+  if (cardNumber === undefined)
+    mess = "We don't have a credit card on file for you to place your order.";
+
+  else {
+    mess = `Your total cost is $${total()}, which will be charged to the card ${cardNumber}.`
+    cart = [];
+  }
+
+  console.log(mess);
+  return cart;
 }
