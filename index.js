@@ -1,23 +1,28 @@
+// declare and Initialize an array: Cart
 var cart = new Array();
-
+// get Cart array
 function getCart() {
   return cart;
 }
-
+// Adding an item with a price  to the cart
 function addToCart(item) {
-  cart[item] = Math.floor(Math.random() * 100);
+  // assign an item (key) to object cart with a random price
+  cart.push({item: Math.floor(Math.random() * 100)});
+  // print out information for the user
   console.log(`${item} has been added to your cart.`);
+  // return cart
   return cart;
 }
-
+// View the cart
 function viewCart() {
-  if (cart.length > 0) {
-    for (var item in cart) {
-      console.log(`In your cart you have ${item} - ${cart[item]}.`);
-    }
-    } else {
-      console.log("Your shopping cart is empty.");
-    }
+    // Check cart is not empty
+    if (cart.length > 0) {
+    // If cart is not empty loop throught the items in cart array.
+      for (var i = 0; i < cart.length; i++) {
+        console.log(`In your cart you have ${Object.keys(cart[i])}`)
+      }
+    } // If cart is empty display a warning message to user.
+    else { console.log("Your shopping cart is empty."); }
 }
 function removeFromCart(item) {
   cart.hasOwnProperty('item') ? delete cart['item'] : console.log("That item is not in your cart.");
