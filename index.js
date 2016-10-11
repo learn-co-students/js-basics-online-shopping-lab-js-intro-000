@@ -6,8 +6,9 @@ function getCart() {
 }
 // Adding an item with a price  to the cart
 function addToCart(item) {
+  var newItem = item;
   // assign an item (key) to object cart with a random price
-  cart.push({item: Math.floor(Math.random() * 100)});
+  cart.push({[newItem]: Math.floor(Math.random() * 100)});
   // print out information for the user
   console.log(`${item} has been added to your cart.`);
   // return cart
@@ -17,6 +18,7 @@ function addToCart(item) {
 function viewCart() {
   // Declare and Initialize a variable to hold msg
   var msg = "In your cart, you have ";
+  // Declare and Initialize a variable to hold the last item
   var lastItem = Object.keys(cart[cart.length - 1]) + " at " + cart[cart.length - 1][Object.keys(cart[cart.length - 1])] + ".";
 
   function itemsInCart() {
@@ -27,7 +29,7 @@ function viewCart() {
   if (cart.length > 0) {
     itemsInCart();
     return `${msg += lastItem}`;
-  } else { return msg = "Your shopping cart is empty.";}
+  } else { "Your shopping cart is empty.";}
 }
 
 function removeFromCart(item) {
