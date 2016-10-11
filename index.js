@@ -64,6 +64,7 @@ function removeFromCart(item){
 }if (nope == false){
 console.log("That item is not in your cart.");
 }
+return cart;
 }
 
 
@@ -74,8 +75,9 @@ function placeOrder(cardNumber){
   else{
     console.log(`We don't have a credit card on file for you to place your order.`);
   }
-  var cart = [];
-
+  for (var i = 0; i< cart.length; i++){
+    removeFromCart(Object.keys(cart[i])[0]);
+  }
 }
 //revise "cart is empty" logic
 //figure out array structure of items and why hasOwnProperty isn't working
