@@ -19,17 +19,20 @@ function viewCart() {
   // Declare and Initialize a variable to hold msg
   var msg = "In your cart, you have ";
   // Declare and Initialize a variable to hold the last item
-  var lastItem = Object.keys(cart[cart.length - 1]) + " at " + cart[cart.length - 1][Object.keys(cart[cart.length - 1])] + ".";
-
+  if (cart.length > 0) {
+  var lastItem = Object.keys(cart[cart.length - 1]) + " at $" + cart[cart.length - 1][Object.keys(cart[cart.length - 1])] + ".";
+}
   function itemsInCart() {
     for (var i = 0; i < cart.length - 1; i++) {
-      msg += Object.keys(cart[i]) + " at " + cart[i][Object.keys(cart[i])] + ", ";
+      msg += Object.keys(cart[i]) + " at $" + cart[i][Object.keys(cart[i])] + ", ";
     }
   }
   if (cart.length > 0) {
     itemsInCart();
-    return `${msg += lastItem}`;
-  } else { "Your shopping cart is empty.";}
+    console.log(`${msg += lastItem}`);
+  } else {
+    console.log("Your shopping cart is empty.");
+  }
 }
 
 function removeFromCart(item) {
