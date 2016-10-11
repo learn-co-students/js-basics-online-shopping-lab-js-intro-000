@@ -74,7 +74,7 @@ function placeOrder(cardNumber){
   else{
     console.log(`We don't have a credit card on file for you to place your order.`);
   }
-
+  var cart = [];
 
 }
 //revise "cart is empty" logic
