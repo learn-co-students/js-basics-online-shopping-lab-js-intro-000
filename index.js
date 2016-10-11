@@ -36,10 +36,20 @@ function viewCart() {
 }
 
 function removeFromCart(item) {
-  var deleteItem = item;
-  cart.hasOwnProperty(deleteItem) ? delete cart[deleteItem] : console.log("That item is not in your cart.");
-  return cart;
-}
+var deleteItem = item;
+function checkForItem() {
+for (var i = 0; i < cart.length; i++) {
+  if (cart[i].hasOwnProperty(deleteItem)) {
+    cart.splice(i, i+1);
+
+} else { return false;}
+} //closing for loop
+} //closing checkForItem
+//if (checkForItem() == false) {
+ //return "That item is not in your cart.";
+//} //closing IF statement
+} //closing removeFromCart
+
 function placeOrder(cardNumber) {
   var creditCardEmpty = cardNumber;
   typeof creditCardEmpty !== 'undefined' ? console.log("We don't have a credit card on file for you to place your order.") :
