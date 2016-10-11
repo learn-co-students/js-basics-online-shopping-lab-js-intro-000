@@ -56,7 +56,7 @@ function removeFromCart(item){
   for (var i = 0; i< cart.length; i++){
     for (var product in cart[i]) {
       if (product === item){
-      cart.splice([i],1)
+      cart.splice([i],1);
       var nope = true;
       console.log(nope);
       }
@@ -92,7 +92,7 @@ function placeOrder(cardNumber){
     console.log(`We don't have a credit card on file for you to place your order.`);
   }
   for (var i = 0; i< cart.length; i++){
-    item = Object.keys(cart[i])[0];
+    var item = Object.keys(cart[i])[0];
     console.log(item);
     removeFromCart(item);
   }
