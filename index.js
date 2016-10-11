@@ -15,15 +15,21 @@ function addToCart(item) {
 }
 // View the cart
 function viewCart() {
-    // Check cart is not empty
-    if (cart.length > 0) {
-    // If cart is not empty loop throught the items in cart array.
-      for (var i = 0; i < cart.length; i++) {
-        console.log(`In your cart, you have ` + Object.keys(cart[i]) + " at " + cart[i][Object.keys(cart[i])] +",");
-      }
-    } // If cart is empty display a warning message to user.
-    else { console.log("Your shopping cart is empty."); }
+  // Declare and Initialize a variable to hold msg
+  var msg = "In your cart, you have ";
+  var lastItem = Object.keys(cart[cart.length - 1]) + " at " + cart[cart.length - 1][Object.keys(cart[cart.length - 1])] + ".";
+
+  function itemsInCart() {
+    for (var i = 0; i < cart.length - 1; i++) {
+      msg += Object.keys(cart[i]) + " at " + cart[i][Object.keys(cart[i])] + ", ";
+    }
+  }
+  if (cart.length > 0) {
+    itemsInCart();
+    return `${msg += lastItem}`;
+  } else { return msg = "Your shopping cart is empty.";}
 }
+
 function removeFromCart(item) {
   cart.hasOwnProperty('item') ? delete cart['item'] : console.log("That item is not in your cart.");
   return cart;
