@@ -36,19 +36,18 @@ function viewCart() {
 }
 
 function removeFromCart(item) {
-var deleteItem = item;
-function checkForItem() {
-for (var i = 0; i < cart.length; i++) {
-  if (cart[i].hasOwnProperty(deleteItem)) {
-    cart.splice(i, i+1);
-
-} else { return false;}
-} //closing for loop
-} //closing checkForItem
-//if (checkForItem() == false) {
- //return "That item is not in your cart.";
-//} //closing IF statement
-} //closing removeFromCart
+var itemCheck = item;
+var cartLength = cart.length;
+  if (cart.length > 0) {
+    for (var i = 0; i < cart.length; i++) {
+      if (cart[i].hasOwnProperty(itemCheck)) {
+        cart.splice(i, i+1);
+        return cart;
+      }
+    }
+    if (cart.length === cartLength) { console.log("That item is not in your cart. ");}
+  } //else { console.log('The cart is empty')}
+}
 
 function placeOrder(cardNumber) {
   var creditCardEmpty = cardNumber;
