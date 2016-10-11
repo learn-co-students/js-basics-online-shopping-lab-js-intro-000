@@ -36,7 +36,8 @@ function viewCart() {
 }
 
 function removeFromCart(item) {
-  cart.hasOwnProperty('item') ? delete cart['item'] : console.log("That item is not in your cart.");
+  var deleteItem = item;
+  cart.hasOwnProperty(deleteItem) ? delete cart[deleteItem] : console.log("That item is not in your cart.");
   return cart;
 }
 function placeOrder(cardNumber) {
