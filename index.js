@@ -45,7 +45,7 @@ var cartLength = cart.length;
         return cart;
       }
     }
-    if (cart.length === cartLength) { console.log("That item is not in your cart. ");}
+    if (cart.length === cartLength) { console.log("That item is not in your cart.");}
   } //else { console.log('The cart is empty')}
 }
 
