@@ -19,7 +19,7 @@ function viewCart() {
     if (cart.length > 0) {
     // If cart is not empty loop throught the items in cart array.
       for (var i = 0; i < cart.length; i++) {
-        console.log(`In your cart you have ${Object.keys(cart[i])}`)
+        console.log(`In your cart, you have ` + Object.keys(cart[i]) + " at " + cart[i][Object.keys(cart[i])] +",");
       }
     } // If cart is empty display a warning message to user.
     else { console.log("Your shopping cart is empty."); }
