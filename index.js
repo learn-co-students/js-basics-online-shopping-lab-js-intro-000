@@ -36,31 +36,36 @@ function viewCart() {
 }
 
 function removeFromCart(item) {
-var itemCheck = item;
-var cartLength = cart.length;
-  funtion checkOperation() {
-    if (cart.length > 0) {
-      for (var i = 0; i < cart.length; i++) {
-        if (cart[i].hasOwnProperty(itemCheck)) {
-          cart.splice(i, i+1);
-          //return cart;
-        }
-      }
-      if (cart.length === cartLength) {
-        console.log("That item is not in your cart.");
-      } else {return cart;}
+
+  var foundIt = false;
+
+  for (var i = 0; i < cart.length; i++ ) {
+    if (cart[i].hasOwnProperty(item)) {
+      cart.splice(i, i+1);
+      foundIt = true;
+      return cart;
     }
   }
-  checkOperation();
+  if (foundIt === false) {
+    console.log("That item is not in your cart.");
+  }
 }
 
 
 
 function placeOrder(cardNumber) {
-  var creditCardEmpty = cardNumber;
-  typeof creditCardEmpty !== 'undefined' ? console.log("We don't have a credit card on file for you to place your order.") :
-  console.log(`"Your total cost is $${total()}, which will be charged to the card ${cardNumber}."`);
+  if (cardNumber === undefined) {
+    console.log("We don't have a credit card on file for you to place your order.");
+  } else {
+    console.log(`Your total cost is $${total()}, which will be charged to the card ${cardNumber}.`);
+  }
+  cart = [];
+
+  //var creditCardEmpty = cardNumber;
+  //typeof creditCardEmpty !== 'undefined' ? console.log("We don't have a credit card on file for you to place your order.") :
+  //console.log(`"Your total cost is $${total()}, which will be charged to the card ${cardNumber}."`);
 }
+
 function setCart(newCart) {
   cart = newCart;
 }
