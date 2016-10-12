@@ -25,6 +25,7 @@ function addToCart(item){
 
 function viewCart(){
 for ( var i = 0 ; i < cart.length + 1 ; i++ ){
+debugger;
 var x = `In your cart, you have ${cart[i]}`
 var y = ` at $${cart[i]},`
 console.log (x+=y)
