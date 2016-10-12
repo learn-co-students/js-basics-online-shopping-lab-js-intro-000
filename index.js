@@ -15,24 +15,19 @@ function total() {
 function getCart() { return cart}
 
 function addToCart(item){
-  var itemPrice =  Math.floor()
-  var itemNPrice = {item:itemPrice}
+
+  var flatPrice = Math.floor(Math.random()*100)
+  var itemNPrice = {[item]:flatPrice}
   cart.push(itemNPrice)
   console.log (`${item} has been added to your cart.`)
   return cart
 }
 
 function viewCart(){
-  var s = {socks:Math.floor()}
-  var p = {puppy:Math.floor()}
-  var i = {iPhone:Math.floor()}
-  cart.push(s)
-  cart.push(p)
-  cart.push(i)
-
-for ( var i = 0 ; i < cart.length ; i++ ){
-console.log (`In your cart, you have socks at $${cart.socks}, puppy at $${cart.puppy}, iPhone at $${cart.iPhone}.`)
-
+for ( var i = 0 ; i < cart.length + 1 ; i++ ){
+var x = `In your cart, you have ${cart[i]}`
+var y = ` at $${cart[i]},`
+console.log (x+=y)
 } console.log ('Your shopping cart is empty.')
 }
 
@@ -44,6 +39,7 @@ function removeFromCart(v){
 if (cart[i].hasOwnProperty(v)){
  toFalse = true
 cart.splice(i,i+1)
+return cart
 }
 }
  if (toFalse === false) {
@@ -60,7 +56,7 @@ for ( let i=0; i < cart.length ; i++){
   else if (cart.hasOwnProperty(card))
   cart.splice(i,i+1)
   else {
-    console.log (" We don\''t have a credit card on file for you to place your order.")
+    console.log ("We don\''t have a credit card on file for you to place your order.")
   }
 }
 
