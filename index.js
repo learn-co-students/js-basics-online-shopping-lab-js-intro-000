@@ -42,13 +42,15 @@ var cartLength = cart.length;
     for (var i = 0; i < cart.length; i++) {
       if (cart[i].hasOwnProperty(itemCheck)) {
         cart.splice(i, i+1);
+        //return cart;
       }
     }
     if (cart.length === cartLength) {
       console.log("That item is not in your cart.");
     } else {return cart;}
-  }
+  } //else { console.log('The cart is empty')}
 }
+
 
 function placeOrder(cardNumber) {
   var creditCardEmpty = cardNumber;
