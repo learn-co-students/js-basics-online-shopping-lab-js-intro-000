@@ -38,18 +38,22 @@ function viewCart() {
 function removeFromCart(item) {
 var itemCheck = item;
 var cartLength = cart.length;
-  if (cart.length > 0) {
-    for (var i = 0; i < cart.length; i++) {
-      if (cart[i].hasOwnProperty(itemCheck)) {
-        cart.splice(i, i+1);
-        //return cart;
+  funtion checkOperation() {
+    if (cart.length > 0) {
+      for (var i = 0; i < cart.length; i++) {
+        if (cart[i].hasOwnProperty(itemCheck)) {
+          cart.splice(i, i+1);
+          //return cart;
+        }
       }
+      if (cart.length === cartLength) {
+        console.log("That item is not in your cart.");
+      } else {return cart;}
     }
-    if (cart.length === cartLength) {
-      console.log("That item is not in your cart.");
-    } else {return cart;}
-  } //else { console.log('The cart is empty')}
+  }
+  checkOperation();
 }
+
 
 
 function placeOrder(cardNumber) {
