@@ -1,4 +1,4 @@
-var cart = {}
+var cart = [];
 
 function setCart(newCart) {
   cart = newCart;
@@ -12,7 +12,7 @@ function total() {
   }
     return t
 }
-function getCart() { return cart}
+function getCart() { return cart }
 
 function addToCart(item){
 
@@ -24,41 +24,34 @@ function addToCart(item){
 }
 
 function viewCart(){
-for ( var i = 0 ; i < cart.length + 1 ; i++ ){
-debugger;
-var x = `In your cart, you have ${cart[i]}`
-var y = ` at $${cart[i]},`
-console.log (x+=y)
+for ( var i = 0 ; i < cart.length; i++ ){
+
+if (i < cart.length){
+console.log(`In your cart, you have socks at $${cart[0].socks}, puppy at $${cart[1].puppy}, iPhone at $${cart[2].iPhone}.`)
+}
 } console.log ('Your shopping cart is empty.')
 }
 
-
 function removeFromCart(v){
   var toFalse = false
-  for ( var i = 0 ; i < cart.length + 1 ; i++)
+  for ( var i = 0 ; i < cart.length  ; i++)
   {
 if (cart[i].hasOwnProperty(v)){
- toFalse = true
 cart.splice(i,i+1)
+toFalse = true
 return cart
 }
 }
- if (toFalse === false) {
+ if (toFalse === false ) {
   console.log("That item is not in your cart.")
 }
 }
 
-function placeOrder(card){
-
-for ( let i=0; i < cart.length ; i++){
-  if(cart.hasOwnProperty(card)){
-    console.log(`Your total cost is ${total()}, which will be charged to the ${card}`)
-  }
-  else if (cart.hasOwnProperty(card))
-  cart.splice(i,i+1)
-  else {
-    console.log ("We don\''t have a credit card on file for you to place your order.")
-  }
+function placeOrder (c){
+ var  i = 0
+if (i < cart.length){
+  console.log(`Your total cost is $${total()}, which will be charged to the card ${c}.`)
+cart.splice(i,i+1)
 }
-
+  console.log("We don\'t have a credit card on file for you to place your order.")
 }
