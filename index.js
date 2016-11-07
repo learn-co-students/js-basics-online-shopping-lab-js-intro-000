@@ -32,38 +32,38 @@ function viewCart(){
 }
 
 function removeFromCart(item){
-var found = false;
-for (var i=0;i <cart.length; i++){
-  if (Object.keys(cart[i])[0] == item){
-    found = true;
-    cart.splice(i,1)
-  } if (found == false) {
-console.log("That item is not in your cart.");
-} else{
-return cart;
-}
+  var found = false;
+  for (var i=0;i <cart.length; i++){
+    if (Object.keys(cart[i])[0] == item){
+      found = true;
+      cart.splice(i,1)
+    }
+  }
+  if (found == false) {
+    console.log("That item is not in your cart.");
+  } else {
+    return cart;
+  }
 }
 
-
-  function total() {
+function total() {
     let t = 0
 
-    for (var i = 0, l = cart.length; i < l; i++) {
-      for (var item in cart[i]) {
-        t += cart[i][item]
-      }
+  for (var i = 0, l = cart.length; i < l; i++) {
+    for (var item in cart[i]) {
+      t += cart[i][item]
     }
-
-    return t
   }
 
+  return t
+}
 
-  function placeOrder(creditCardNumber){
-   if(!creditCardNumber){
-     console.log("We don't have a credit card on file for you to place your order.");
-   } else {
-     console.log(`Your total cost is $${total()}, which will be charged to the card ${creditCardNumber}.`);
-     var cart = [];
-    }
-   }
- }
+
+function placeOrder(creditCardNumber){
+  if(!creditCardNumber){
+    console.log("We don't have a credit card on file for you to place your order.");
+  } else {
+    console.log(`Your total cost is $${total()}, which will be charged to the card ${creditCardNumber}.`);
+    cart = [];
+  }
+}
