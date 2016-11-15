@@ -42,6 +42,7 @@ function viewCart() {
   }
 }
 
+// couldn't get this to work'
 // function removeFromCart(item) {
 //   var listHasItem = false
 //   for(let x in cart) {
@@ -87,11 +88,3 @@ function placeOrder(creditcard) {
     console.log("We don't have a credit card on file for you to place your order.")
   }
 }
-
-// addToCart("dwdwad")
-viewCart()
-addToCart("pizza")
-viewCart()
-removeFromCart("pizza")
-viewCart()
-console.log(cart);
