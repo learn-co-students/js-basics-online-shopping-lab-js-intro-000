@@ -37,26 +37,6 @@ function viewCart() {
       goodness.push(`${itemd} at $${cart[i][itemd]}`)
     }
   }
-  console.log(`In your cart, you have ${goodness.join(", ")}.`);
+  console.log(`In your cart you have ${goodness.join(", ")}.`);
   return cart;
  }
-
-function removeFromCart(del) {
-  for (var i = 0, l = cart.length; i < l; i++) {
-    for (var itemf in cart[i]) {
-    if (itemf === del) {
-      cart.splice(cart[i],1)
-    return cart;
-    }
-    }
-  }
-  console.log("That item is not in your cart.");
-  return cart;
-}
-function placeOrder(card) {
-  if (card === undefined) {
-    console.log("We don't have a credit card on file for you to place your order.");
-  }
-  console.log(`Your total cost is $${total()}, which will be charged to the card ${card}.`);
-  cart = [];
-}
