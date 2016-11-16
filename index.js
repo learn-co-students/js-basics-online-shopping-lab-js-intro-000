@@ -43,11 +43,9 @@ function viewCart() {
 
 function removeFromCart(del) {
   for (var i = 0, l = cart.length; i < l; i++) {
-    for (var itemf in cart[i]) {
-    if (itemf === del) {
+    if (cart[i].hasOwnProperty(del)) {
       cart.splice(cart[i],1)
     return cart;
-    }
     }
   }
   console.log("That item is not in your cart.");
