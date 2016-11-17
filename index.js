@@ -27,7 +27,7 @@ function addToCart(item) {
 
   var price = Math.floor(Math.random() * 100)
 
-  cart.push( {[item]: price} )
+  cart.push({[item]: price})
 
   console.log(`${item} has been added to your cart.`)
 
@@ -40,12 +40,12 @@ function viewCart() {
 //try to make the first string a variable
 //use variable += then the for loop... the for loop should tack the looped info
 //onto the variable, and then at the bottom i can console.log the variable with the stuff stuck on
-  var itemNames = Object.keys(cart)
+
   var inCart = "In your cart, you have "
 
   if (cart.length > 0) {
-    for (var itemNames in cart) {
-      inCart += `${itemNames} at ${cart[itemNames]}`
+    for (var i = 0, l = cart.length; i < l; i++) {
+      inCart += `${cart[i]} at ${cart[cart[i]]}, `
     }
     console.log(inCart)
   }
