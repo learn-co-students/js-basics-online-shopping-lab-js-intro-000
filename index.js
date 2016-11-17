@@ -24,26 +24,33 @@ function getCart(){
 
 
 function addToCart(item) {
-//My price variable appears to be the issue. I think that adding the item to the array cart
-//is not an issue but adding it as an object with the price variable is messing me up
+
   var price = Math.floor(Math.random() * 100)
 
-  cart.push( {item: price} )
+  cart.push( {[item]: price} )
 
   console.log(`${item} has been added to your cart.`)
 
   return cart
 }
 
-function viewCart() {
+//I need "In your cart, you have " to be OUT of the loop part.
 
-  if (cart.length == 0) {
-    console.log("Your shopping cart is empty.")
-    }
-  else {
+function viewCart() {
+//try to make the first string a variable
+//use variable += then the for loop... the for loop should tack the looped info
+//onto the variable, and then at the bottom i can console.log the variable with the stuff stuck on
+  var itemNames = Object.keys(cart)
+  var inCart = "In your cart, you have "
+
+  if (cart.length > 0) {
     for (var itemNames in cart) {
-    console.log(`In your cart you have ${itemNames} at ${cart[itemNames]}`)
+      inCart += `${itemNames} at ${cart[itemNames]}`
     }
+    console.log(inCart)
+  }
+  else {
+    console.log("Your shopping cart is empty.")
   }
 }
 
@@ -57,13 +64,12 @@ function removeFromCart(thing) {
 }
 
 function placeOrder(cardNumber) {
-  if (cardNumber.length == 0) {
-    console.log("We don't have a credit card on file for you to place your order.")
-
-  }
-  else {
+  if (cardNumber) {
     console.log(`Your total cost is $${total()}, which will be charged to the card ${cardNumber}.`)
     //empty the cart here
+  }
+  else {
+    console.log("We don't have a credit card on file for you to place your order.")
   }
 
 }
