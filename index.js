@@ -37,16 +37,21 @@ function addToCart(item) {
 //I need "In your cart, you have " to be OUT of the loop part.
 
 function viewCart() {
-//try to make the first string a variable
-//use variable += then the for loop... the for loop should tack the looped info
-//onto the variable, and then at the bottom i can console.log the variable with the stuff stuck on
 
   var inCart = "In your cart, you have "
 
   if (cart.length > 0) {
-    for (var i = 0, l = cart.length; i < l; i++) {
-      inCart += `${cart[i]} at ${cart[cart[i]]}, `
+    for (var i = 0; i < cart.length-1; i++) {
+      var itemObject = cart[i]
+      var itemNames = Object.keys(itemObject)
+
+        for (var itemNames in itemObject){
+          inCart += `${itemNames} at $${itemObject[itemNames]}, `
+        }
     }
+    var finalItem = cart[cart.length-1]
+    inCart += `${Object.keys(finalItem)} at $${finalItem[Object.keys(finalItem)]}.`
+
     console.log(inCart)
   }
   else {
@@ -55,13 +60,20 @@ function viewCart() {
 }
 
 function removeFromCart(thing) {
-  if (cart.hasOwnProperty(thing)) {
-    //remove the thing
-  }
-  else {
-    console.log("That item is not in your cart.")
-  }
+
+    for (let i = 0; i < cart.length; i++){
+      var itemObjects = cart[i]
+      if (itemObjects.hasOwnProperty(thing) == false && i == cart.length-1){
+        console.log("That item is not in your cart.")
+      }
+      else if (itemObjects.hasOwnProperty(thing) == true){
+        cart.splice(i, 1)
+      }
+    }
+
+
 }
+
 
 function placeOrder(cardNumber) {
   if (cardNumber) {
