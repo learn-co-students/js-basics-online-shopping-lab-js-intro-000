@@ -60,25 +60,30 @@ function viewCart() {
 }
 
 function removeFromCart(thing) {
-
+  if (cart.length == 0) {
+    console.log("That item is not in your cart.")
+  }
+  else {
     for (let i = 0; i < cart.length; i++){
       var itemObjects = cart[i]
       if (itemObjects.hasOwnProperty(thing) == false && i == cart.length-1){
-        console.log("That item is not in your cart.")
+        console.log('That item is not in your cart.')
       }
       else if (itemObjects.hasOwnProperty(thing) == true){
         cart.splice(i, 1)
+        return cart
       }
     }
-
-
+  }
 }
 
 
 function placeOrder(cardNumber) {
   if (cardNumber) {
     console.log(`Your total cost is $${total()}, which will be charged to the card ${cardNumber}.`)
-    //empty the cart here
+    for (let i = cart.length-1; cart.length > 0; i--){
+      cart.pop()
+    }
   }
   else {
     console.log("We don't have a credit card on file for you to place your order.")
