@@ -40,3 +40,34 @@ function viewCart() {
     console.log(temp.substring(0, temp.length-2) + ".");
     }
 }
+
+function removeFromCart(item) {
+    for (var i = 0; i < cart.length; i++) {
+        if (cart[i].hasOwnProperty(item)) {
+            cart.splice(i,1);
+            return cart;
+        }
+    }
+    console.log("That item is not in your cart.");
+}
+
+function placeOrder(cardNumber) {
+    function total() {
+        var totalCash = 0;
+        for (var i = 0; i < cart.length; i++) {
+            for (var key in cart[i]) {
+                if (cart[i].hasOwnProperty(key)) {
+                    totalCash += cart[i][key];
+                }
+            }
+        }
+        return totalCash;
+    }
+    if (cardNumber == undefined) {
+        console.log("We don't have a credit card on file for you to place your order.");
+    } else {
+        console.log(`Your total cost is $${total()}, which will be charged to the card ${cardNumber}.`);
+        cart = [];
+        return cart;
+    }
+}
