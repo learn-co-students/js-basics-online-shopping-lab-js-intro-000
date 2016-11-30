@@ -16,8 +16,8 @@ return cart///create the cart
 }
 function addToCart(item){///create a function and gave it an agrument (item)
   var price/// created a variable and called it price but didnt give it a value
-  price=Math.floor((Math.random()*100))/// the variable equals to a number with is created using Math.random(0-.99)and math floor rounds of the number
- cart.push({[item]:[price]})///we use the push function to add the var price (number that was created) into the cart object array
+  price=Math.floor((Math.random()*100)+1)/// the variable equals to a number with is created using Math.random(0-.99)and math floor rounds of the number
+ cart.push({[item]:price})///we use the push function to add the var price (number that was created) into the cart object array
 
   console.log (item + " has been added to your cart.")/// prints the item
   return cart/// and returns the cart array
@@ -50,8 +50,3 @@ while(i--)///while function will keep decrement(--)i value
 cart.splice(cart.indexOf[i],1)/// splice removes an item from the cart array which we dont know the index of using var [i] and 1 means it will remove 1 item from that location
 return cart/// after its removed, we return the cart with the item removed
 }
-function placeOrder(CrediCardNumber){
-var i
-if (i<=CrediCardNumber.length){
-console.log ('We don\'t have a credit card on file for you to place your order.')
-}}
