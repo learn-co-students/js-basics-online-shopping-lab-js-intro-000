@@ -54,4 +54,8 @@ function placeOrder(cardNumber){
 if (arguments.length===0){
   console.log ("We don't have a credit card on file for you to place your order.")
 }
+var i=0
+else(i<arguments.length-1){
+  console.log ("Your total cost is $${total()}, which will be charged to the card ${cardNumber}.")
+}
 }
