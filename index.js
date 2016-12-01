@@ -51,5 +51,7 @@ cart.splice(cart.indexOf[i],1)/// splice removes an item from the cart array whi
 return cart/// after its removed, we return the cart with the item removed
 }
 function placeOrder(cardNumber){
-
+if (arguments.length===0){
+  console.log ("We don't have a credit card on file for you to place your order.")
+}
 }
