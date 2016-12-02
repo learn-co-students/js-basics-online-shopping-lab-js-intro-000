@@ -62,7 +62,9 @@ textkeyarray = Object.keys (textobject);
 if (item === textkeyarray[0]) {
 cart.splice (i,1);
 }
-else console.log ('That item is not in your cart.');
+else
+{console.log ('That item is not in your cart.');
+}
 }
 return cart
 }
@@ -73,7 +75,7 @@ if (typeof creditcardnumber != "number"){
 console.log ("We don't have a credit card on file for you to place your order.")
 }
 else {
-for (var i=0, costs=0; i<(cart.length); i++) {
+for (var i=0, costs=0, textobject={}; i<(cart.length); i++) {
 textobject = cart [i];
 
 textkeyarray = Object.keys (textobject);
