@@ -1,4 +1,5 @@
-var cart = [{ pizza: 63 }];
+var cart = [];
+var t = 0;
 
 function getCart(){
   return cart;
@@ -34,23 +35,43 @@ function setCart(newCart) {
 }
 
 function total() {
-  let t = 0
   for (let i = 0; i < cart.length; i++){
     var item = Object.keys(cart[i])[0];
     var price = cart[i][item];
     t = t + price;
   }
-  return t
+  return t;
+}
+
+function checkAdult(age) {
+    return age >= 18;
+}
+
+function myFunction() {
+    document.getElementById("demo").innerHTML = ages.every(checkAdult);
+}
+
+function check(item){
+  return
 }
 
 function removeFromCart(item){
-  console.log(cart.item);
-  if(cart.hasOwnProperty(item)==false){
-    return "That item is not in your cart.";
+  for (let i = 0; i < cart.length; i++){
+    if (Object.keys(cart[i])== item){
+      cart.splice(i, 1);
+      return cart;
+    }
   }
-  else{
-    console.log(delete cart.item);
-    delete cart.item;
-  }
+  console.log("That item is not in your cart.");
 }
-removeFromCart();
+
+function placeOrder(cardNumber){
+  if(cardNumber === undefined){
+    console.log("We don't have a credit card on file for you to place your order.");
+  }
+  console.log("Your total cost is $" + t + ", which will be charged to the card " + cardNumber +".");
+  cart = [];
+}
+
+total();
+placeOrder();
