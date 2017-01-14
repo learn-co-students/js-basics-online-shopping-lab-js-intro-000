@@ -6,13 +6,13 @@ function setCart(newCart) {
 
 function total() {
   let t = 0
-  
+
   for (var i = 0, l = cart.length; i < l; i++) {
     for (var item in cart[i]) {
       t += cart[i][item]
     }
   }
-  
+
   return t
 };
 
@@ -30,14 +30,24 @@ function addToCart(item)  {
   return cart;
 };
 
-function viewCart() {  
-  var getKeys = Object.keys(cart);
-  if (cart.length === 0)  {
+function viewCart() {
+  var cartStructure = [];
+
+  if (!cart.length)  {
     console.log("Your shopping cart is empty.");
   }
   else {
-    for (var items in cart) {
-      console.log(`In your cart, you have ${cart}.`);
+    for (var i = 0; i < cart.length; i++) {
+      var bothCombined = cart[i];
+      var extractItem = Object.keys(bothCombined);
+      var extractPrice = bothCombined[extractItem];
+      cartStructure.push(`${extractItem} at \$${extractPrice}`);
     }
+    var joinAll = cartStructure.join(', ');
+    console.log("In your cart, you have " +joinAll+ ".");
   }
 };
+
+function removeFromCart() {
+
+}
