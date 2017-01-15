@@ -11,31 +11,45 @@ function setCart(newCart) {
 function getCart() {return cart}
 
 function addToCart(item) {
-                          // cart.push({item:Math.random()*100});
-                          cart.push({[item]:Math.floor(Math.random()*100)});
-                          console.log(`${item} has been added to your cart.`);
 
-                          return cart}
+                          cart.push({[item]:Math.floor(Math.random()*100)})
+                          ;
+                          console.log(`${item} has been added to your cart.`)
+                          ;
+
+                          return cart
+                        }
 
 function total() {
-  let t = 0
-for (var i = 0, l = cart.length; i < l; i++) {
-    var item=Object.keys(cart[i])[0]
-    t += cart[i][item]
-  }
+               let t = 0
+                   for (var i = 0, l = cart.length; i < l; i++) {
+                   var item=Object.keys(cart[i])[0]
+                     t += cart[i][item]
+                             }
 
 
-return t
-}
-function viewCart() {if (cart.length<1) {console.log (`Your shopping cart is empty.`)}
+                    return t
+                           }
+function viewCart() {
+                    if (cart.length<1) {
+                      console.log (`Your shopping cart is empty.`)
+                                        }
                       else
-                      var conlog='In your cart, you have'
-                       {for (var i = 0, l = cart.length; i < l-1; i++)
-                        conlog=conlog+` ${Object.keys(cart[i])[0]} at ${cart[i][Object.keys(cart[i])[0]]}, `}
-                        conlog=conlog+` ${Object.keys(cart[cart.length-1])[0]} at ${cart[cart.length-1][Object.keys(cart[cart.length-1])[0]]}. `;
+                           {
+                             var conlog='In your cart, you have'
+                           {
+                            for (var i = 0, l = cart.length; i < l-1; i++)
+                             {
+                               conlog=conlog+` ${Object.keys(cart[i])[0]} at ${cart[i][Object.keys(cart[i])[0]]}, `
+                             }
+                        conlog=conlog+` ${Object.keys(cart[cart.length-1])[0]} at ${cart[cart.length-1][Object.keys(cart[cart.length-1])[0]]}. `
+                        ;
 
 
-                        console.log(conlog)}
+                        console.log(conlog)
+                      }
+                    }
+                  }
 
  function removeFromCart (itemname) {for (var i = 0, l = cart.length; i < l; i++) if (Object.keys(cart[i])[0]==[itemname])
                                     { cart.splice(i-1,1)}
