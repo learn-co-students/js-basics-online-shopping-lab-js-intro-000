@@ -32,31 +32,41 @@ function total() {
                            }
 function viewCart() {
                     if (cart.length<1) {
-                      console.log (`Your shopping cart is empty.`)
+                             console.log (`Your shopping cart is empty.`)
                                         }
-                      else
-                           {
-                             var conlog='In your cart, you have'
-                           {
-                            for (var i = 0, l = cart.length; i < l-1; i++)
-                             {
+                   else            {
+                             var conlog='In your cart, you have' ;
+                            for (var i = 0, l = cart.length; i < l-1; i++) {
                                conlog=conlog+` ${Object.keys(cart[i])[0]} at ${cart[i][Object.keys(cart[i])[0]]}, `
+                                   }
+                             conlog=conlog+` ${Object.keys(cart[cart.length-1])[0]} at ${cart[cart.length-1][Object.keys(cart[cart.length-1])[0]]}. `
+                                ;
+
+
+                            console.log(conlog)
                              }
-                        conlog=conlog+` ${Object.keys(cart[cart.length-1])[0]} at ${cart[cart.length-1][Object.keys(cart[cart.length-1])[0]]}. `
-                        ;
+                                 }
 
 
-                        console.log(conlog)
-                      }
-                    }
-                  }
+ function removeFromCart (itemname) {
+                   for (var i = 0, l = cart.length; i < l; i++) {
+                                      if (Object.keys(cart[i])[0]==[itemname])  {
+                                      cart.splice(i-1,1)
+                                                                                  }
 
- function removeFromCart (itemname) {for (var i = 0, l = cart.length; i < l; i++) if (Object.keys(cart[i])[0]==[itemname])
-                                    { cart.splice(i-1,1)}
-
-                                    else {console.log (`That item is not in your cart.`)}
-                                    ;return cart
-                                  }
-function placeOrder(cardNumber) {if (cardNumber===undefined) {console.log(`We don'\t have a credit card on file for you to place your order.`)}
-                                  else {console.log (`Your total cost is $ ${total()}, which will be charged to the card ${cardNumber}.`);
-                                  cart=[]; return cart } }
+                                    else {
+                                      console.log (`That item is not in your cart.`)
+                                         }
+                                         ;return cart
+                                         }
+                                       }
+function placeOrder(cardNumber) {
+                 if (cardNumber===undefined) {
+                   console.log(`We don'\t have a credit card on file for you to place your order.`)
+                                               }
+                                  else {
+                                    console.log (`Your total cost is $ ${total()}, which will be charged to the card ${cardNumber}.`);
+                                     cart=[];
+                                     return cart
+                                       }
+                                   }
