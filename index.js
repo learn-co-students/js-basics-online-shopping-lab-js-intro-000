@@ -35,11 +35,11 @@ function viewCart() {
                              console.log (`Your shopping cart is empty.`)
                                         }
                    else            {
-                             var conlog='In your cart, you have' ;
+                             var conlog='In your cart, you have ' ;
                             for (var i = 0, l = cart.length; i < l-1; i++) {
-                               conlog=conlog+` ${Object.keys(cart[i])[0]} at ${cart[i][Object.keys(cart[i])[0]]}, `
+                               conlog=conlog+`${Object.keys(cart[i])[0]} at $${cart[i][Object.keys(cart[i])[0]]}, `
                                    }
-                             conlog=conlog+` ${Object.keys(cart[cart.length-1])[0]} at ${cart[cart.length-1][Object.keys(cart[cart.length-1])[0]]}. `
+                             conlog=conlog+`${Object.keys(cart[cart.length-1])[0]} at $${cart[cart.length-1][Object.keys(cart[cart.length-1])[0]]}. `
                                 ;
 
 
