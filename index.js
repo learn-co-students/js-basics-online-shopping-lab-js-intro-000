@@ -1,4 +1,4 @@
-var cart;
+var cart = [];
 
 function setCart(newCart) {
   cart = newCart;
@@ -14,4 +14,57 @@ function total() {
   }
 
   return t
+}
+
+
+function getCart() {
+  return cart;
+}
+
+function addToCart(item) {
+  var price = Math.floor(Math.random() * 100);
+  var itemPrice = {}
+  itemPrice[item] = price
+
+  cart.push(itemPrice);
+  console.log(`${item} has been added to your cart.`);
+  return cart;
+}
+
+function viewCart() {
+  if (cart.length > 0) {
+    var itemsList = []
+    for (var i = 0; i < cart.length; i++) {
+      for (var item in cart[i]) {
+        itemsList.push(`${item} at $${cart[i][item]}`);
+      }
+    }
+    console.log(`In your cart, you have ${itemsList.join(", ")}.`);
+  } else {
+    console.log("Your shopping cart is empty.");
+  }
+}
+
+function removeFromCart(item) {
+  for (var i = 0; i < cart.length; i++) {
+    // console.log(item);
+    // console.log(cart[i]);
+    // console.log(cart[i].hasOwnProperty(item));
+    if (cart[i].hasOwnProperty(item)) {
+      cart.splice(i, 1);
+    }
+    return cart
+  }
+  console.log("That item is not in your cart.");
+  return
+}
+
+
+function placeOrder(cardNumber) {
+  if (typeof cardNumber === "undefined") {
+    console.log("We don't have a credit card on file for you to place your order.");
+  } else {
+    console.log(`Your total cost is $${total()}, which will be charged to the card ${cardNumber}.`);
+    cart.length = 0;
+  }
 }
