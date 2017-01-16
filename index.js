@@ -39,7 +39,7 @@ function viewCart() {
                             for (var i = 0, l = cart.length; i < l-1; i++) {
                                conlog=conlog+`${Object.keys(cart[i])[0]} at $${cart[i][Object.keys(cart[i])[0]]}, `
                                    }
-                             conlog=conlog+`${Object.keys(cart[cart.length-1])[0]} at $${cart[cart.length-1][Object.keys(cart[cart.length-1])[0]]}. `
+                             conlog=conlog+`${Object.keys(cart[cart.length-1])[0]} at $${cart[cart.length-1][Object.keys(cart[cart.length-1])[0]]}.`
                                 ;
 
 
@@ -48,7 +48,10 @@ function viewCart() {
                                  }
 
 
- function removeFromCart (itemname) {
+ function removeFromCart (itemname) {if (cart.length==0) {
+       console.log (`That item is not in your cart.`)
+         }
+         else {
                    for (var i = 0, l = cart.length; i < l; i++) {
                                       if (Object.keys(cart[i])[0]==[itemname])  {
                                       cart.splice(i-1,1)
@@ -60,12 +63,13 @@ function viewCart() {
                                          ;return cart
                                          }
                                        }
+                                     }
 function placeOrder(cardNumber) {
                  if (cardNumber===undefined) {
-                   console.log(`We don'\t have a credit card on file for you to place your order.`)
-                                               }
+                   console.log(`We don\'t have a credit card on file for you to place your order.`)
+                 }
                                   else {
-                                    console.log (`Your total cost is $ ${total()}, which will be charged to the card ${cardNumber}.`);
+                                    console.log (`Your total cost is $${total()}, which will be charged to the card ${cardNumber}.`);
                                      cart=[];
                                      return cart
                                        }
