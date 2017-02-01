@@ -68,6 +68,7 @@ describe('#total', function() {
     const puppyCost = getCart()[1]["puppy"];
     const iPhoneCost = getCart()[2]["iPhone"];
 
+
     const totalCost = socksCost + puppyCost + iPhoneCost;
 
     expect(total()).toEqual(totalCost)
