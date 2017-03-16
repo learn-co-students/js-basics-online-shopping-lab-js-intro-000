@@ -49,6 +49,7 @@ describe('#viewCart', function() {
     expect(console.log).toHaveBeenCalledWith(
       `In your cart, you have socks at $${socksCost}, puppy at $${puppyCost}, iPhone at $${iPhoneCost}.`
     )
+
   });
 
   it("should print 'Your shopping cart is empty.' if the cart is empty", function() {
