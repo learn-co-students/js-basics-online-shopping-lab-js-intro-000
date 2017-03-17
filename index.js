@@ -1,17 +1,52 @@
-var cart;
-
-function setCart(newCart) {
-  cart = newCart;
+/*
+var meals = {
+  breakfast: 'oatmeal',
+  lunch: 'tuna',
+  dinner: 'spaghetti'
 }
 
-function total() {
-  let t = 0
+for (var mealName in meals) {
+  console.log(`I ate ${meals[mealName]} for ${mealName}!`)
+}
+*/
+var cart = [];
+var setCart = function(items){
+  cart = items;
+}
 
-  for (var i = 0, l = cart.length; i < l; i++) {
-    for (var item in cart[i]) {
-      t += cart[i][item]
-    }
+var total = function(){
+  var subTotal = 0;
+  for (var i = 0; i <cart.length; i++){
+      subTotal = subTotal + cart[i];
   }
+  return subTotal;
+}
 
-  return t
+var getCart = function(){
+  return cart;
+}
+
+var addToCart = function(items){
+    var itemPrice = 0;
+    itemPrice = Math.floor(Math.random);
+    var myObj = '';
+    myObj = {items: itemPrice};
+    cart.push(myObj);
+    console.log(myObj);
+    return cart;
+}
+/*
+for (var mealName in meals) {
+  console.log(`I ate ${meals[mealName]} for ${mealName}!`)
+}
+*/
+var viewCart = function(){
+    for (var price in cart){
+      console.log('In your cart, you have , ${cart[price]}, ${price}' )
+    }
+}
+
+var removeFromCart = function(items){
+    removeItem(item, cart)
+
 }
