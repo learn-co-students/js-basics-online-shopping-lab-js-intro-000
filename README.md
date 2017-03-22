@@ -1,76 +1,122 @@
-# Online Shopping
+# Time complexity
 
-## Objectives
-+ Create and manipulate hashes
-+ Create and manipulate arrays
-+ Create and call functions
-+ Create and use variables
-+ Use string methods
-+ Use number methods
+### Objectives
++ Calculate the  time it takes a function for a given input
++ Calculate the time it takes a function for a inputs of different lengths
 
 
-## Introduction
+## Our first algorithm
 
-Before we dive into this lab, we need to tell you something: remember how easy it was to iterate over an array with a `for` or a `while` loop? Well, it's nearly as easy to iterate over an object in the same way. (Remember, arrays are essentially fancy objects — it makes sense that iteration would be similar.)
+One common question we must answer as developers, is inclusion.  Consider the following questions.
 
-But objects don't have sequential indexes like arrays do, so we need another way of getting the keys. Luckily, that's exactly what `Object.keys()` is for!
+* Is the letter "a" in a given word "banana"
 
-``` javascript
-var meals = {
-  breakfast: 'oatmeal',
-  lunch: 'tuna',
-  dinner: 'spaghetti'
-}
+First, note that we can simply answer these questions with the existing Javascript method `includes`.
 
-var mealNames = Object.keys(meals)
-
-for (var i = 0, l = mealNames.length; i < l; i++) {
-  console.log(`I ate ${meals[mealNames[i]]} for ${mealNames[i]}!`)
-}
-
-// I ate oatmeal for breakfast!
-// I ate tuna for lunch!
-// I ate spaghetti for dinner!
+```javascript
+"banana".includes("a")
+  // true  
 ```
 
-But this is a little verbose and sort of hard to read: we have to get the name of the meal using `mealNames[i]` and then use that name as a key in the object `meals` to get the food for that meal (`meals[mealNames[i]]`). Gross.
+But how does Javascript implement something like this?  For right now, let's assume that Javascript implements it the same way we would, by examining each letter.  
 
-There's a (slightly) better way! JavaScript has a special loop, called `for...in`, that makes iterating over objects a bit easier:
+Great, so now let's consider the cost of algorithm that examines each letter. 
 
-``` javascript
-var meals = {
-  breakfast: 'oatmeal',
-  lunch: 'tuna',
-  dinner: 'spaghetti'
-}
+### The cost of examining each letter
 
-for (var mealName in meals) {
-  console.log(`I ate ${meals[mealName]} for ${mealName}!`)
-}
+When we ask about 'cost' in the context of algorithms, what we mean for now is time.  
+
+Here, we want to calculate the time it takes to consider each letter and test for equality.  First let's write out the code, and then we'll calculate the cost.  Our code may look like the following:
+
+```javascript
+  function stringIncludes(word, letter){
+    let matches;
+    for(let i = 0; i < word.length; i++){
+      if(word[i] === letter){
+        matches = true
+      }
+    }
+    return !!matches
+  }
+
+  stringIncludes("banana", "a")
+  // true
+  stringIncludes(fruit, "d")
+  // false
 ```
 
-Much better.
+In the code above, we visit each letter in the string, and then we ask the question, does it equal our letter.  If there is no matching element, the `matches` variable will equal `undefined`, to coerce that into a boolean value we use the `!!` operator.  
 
-**NOTE**: You can use `for...in` loops with arrays, too, but the variable that you get will just be the index (in order), so this particular loop is _usually_ used with objects.
+  > What is the !! operator?
+  
+> The !! (double bang) operator coerces an expression into its boolean value. Think of !! as follows.  If you want to change false into true, you would write `!false`.  Now if you want to coerce a falsy value like undefined into true, you would write  
+`
+!undefined
+// true
+`
 
-## Instructions
+> But our real goal is to return true when the expression is truthy and false when the expression is falsy.  Currently, an expression like `!undefined` returns true when the expression is falsy.  So let's add another ! operator to have it match:
+`
+!!undefined
+// false
+`
 
-+ We've given you a function `setCart()` which takes one argument, an array, and sets `cart` (a variable that we've provided) to that array.
+> Thus, we coerce an expression to it's boolean value.
 
-+ We've also given you a function `total` which does not accept any arguments. It iterates over the items in `cart` and adds up their prices, then returns the total.
+Now how long does that entire procedure take?
 
-+ Define a global variable (use `var` at the top level) called `cart`. Initialize it as an empty array.
+```javascript
+function stringIncludes(word, letter){
+  let matches; // 1
+  for(let i = 0; i < word.length; i++){ //2
+    if(word[i] === letter){ //3
+      matches = true //4
+    }
+  }
+  return !!matches // 5
+}
 
-+ Define a function `getCart` that takes no arguments and returns the `cart`.
+stringIncludes("banana", "d")
+```
 
-+ Define a function `addToCart`. This function should accept one argument, the item the user wants to purchase.
-    This function should automatically set a price for this item by generating a random number between 0 and 100. (Hint: `Math.random()` generates a random number in [0, 1] (0 inclusive, 1 non-inclusive); `Math.floor()` rounds a number down to the nearest integer.)
-    This function should add the item and the price as an object (`{item: price}`) to the `cart` array. This function should print out to the console `<item> has been added to your cart.` and return the cart.
+So first, when we ask how long a procedure takes, a shorthand is to ask how many lines of code are involved.  In the above code, not including those closing brackets, it looks like the answer is five.  But intuition tells us there's more work involved than that.
 
-+ Define a function `viewCart` which does not accept any arguments. This function should loop over every item in `cart` to print out `"In your cart you have [item and price pairs]."`. If there isn't anything in your cart, the function should print out `"Your shopping cart is empty."`.
+Let's take a closer look by using our function to determine if the letter "d" is in the string "banana".  
 
-+ Define a function `removeFromCart` which accepts one argument, the name of the item you wish to remove. If the item isn't in the cart, the function should print out `"That item is not in your cart."`. If the item is in your cart, it should remove the object from the `cart` array. Then return the cart. (**HINT**: Check each object's key to see if it matches the parameter, then remove it if it matches. You might find [hasOwnProperty](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/hasOwnProperty) to be useful.)
+```javascript
+function stringIncludes(word, letter){
+  let matches; // 1
+  for(let i = 0; i < fruit.length; i++){ //2
+    if(word[i] === letter){ // + 6
+      matches = true //
+    }
+  }
+  return !!matches // 9
+}
 
-+ Define a function `placeOrder` which accepts one argument, a credit card number. If no argument is received, then the function should print out `"We don't have a credit card on file for you to place your order."`. If there is a credit card on file, the function should print out `"Your total cost is $${total()}, which will be charged to the card ${cardNumber}."`. The function should empty the `cart` array.
+stringIncludes("banana", "d")
+```
 
-<p class='util--hide'>View <a href='https://learn.co/lessons/js-basics-online-shopping-lab'>Online Shopping Lab</a> on Learn.co and start learning to code for free.</p>
+In the first line, we declare the variable `let matches;` Then, for each letter we ask if it equals "d".  So we run the if expression six times (one for each letter).  Finally, we coerce the variable matches to it's boolean value, and return that value.  So we would probably say there are nine steps involved.
+
+Notice that how long it takes to guarantee that a letter is not in a word depends on the size of our word.  So let's express the time it takes to run this function in terms of the size of our string.  
+
+If let the number of letters in our word be `n` then we can say our function runs in `n + 3` time.  So if we choose a string of 100 letters, this takes 100 + 3 = 103 time.  We call this the time complexity of the function.
+
+![time-complexity](/Users/flatironschool/Desktop/time-complexity.png)
+
+As we see in the first sentence of the Google definition, time complexity is expressed in terms of the length of the input.  The second sentence about big O, coefficients, and lower order terms we'll talk about in the sections to come.
+
+But first!
+
+### A lingering problem
+
+Doesn't the time complexity also depend on whether there is a match, and where that match occurs?  For example, if we give our function the arguments
+
+`stringIncludes("banana", "b")`
+
+we no longer have to visit each letter, and now our function should take less time to run, right?  Let's consider that in the next section with a discussion of best case, worse case, and average case scenarios for an algorithm.  For now, let's appreciate what we learned so far.
+
+### Summary
+
+In this section, we worked towards a mechanism for describing how costly a function is.  We calculate the cost by counting the number of lines that are run in a function.  We recognize that the cost of performing a function varies with the size of the input, so we describe the cost in terms of the size of the input.  We call this cost the time complexity of the function.
