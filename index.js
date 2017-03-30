@@ -1,4 +1,4 @@
-var cart = []
+var cart = [] //empty cart
 
 function getCart() {
   return cart
