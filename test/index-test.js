@@ -82,7 +82,7 @@ describe('#removeFromCart', function() {
 
     removeFromCart("pizza");
 
-    expect(getCart()).toEqual([]);
+    expect(getCart()).toEqual('Nada');
   });
 
   it("alerts you if you're trying to remove an item that isn't in your cart", function() {
