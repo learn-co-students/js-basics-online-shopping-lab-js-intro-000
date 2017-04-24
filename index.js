@@ -48,8 +48,6 @@ function removeFromCart(item_name){
       itemIndex = i
     }
   }
-
-
   if(itemFound){
     cart.splice(itemIndex,1)
     return cart
