@@ -19,10 +19,12 @@ function total() {
 
 function addToCart(item){
   var price=Math.floor(Math.random()*100)
+  //cart[`${item}`]=price;
   cart.push({[item] : price})
   console.log(`${item} has been added to your cart.`)
   return cart
 }
+
 
 function viewCart(){
   if(cart.length===0){
@@ -30,6 +32,7 @@ function viewCart(){
   }else{
     var array=[]
     for(let i=0;i<cart.length;i++){
+
       for(var itemName in cart[i]){
         array.push(`${itemName} at $${cart[i][itemName]}`)
       }
@@ -38,19 +41,20 @@ function viewCart(){
   }
 }
 
+
+
 function removeFromCart(item){
-  //var found=false
-  for(let i=0;i<cart.length;i++){
-    if(cart[i].hasOwnProperty(item)){
-      cart.splice(i,1);
-    //  found=true;
-    //  break;
-      return;
+  //for(let i=0;i<cart.length;i++){
+  for(var items in cart){
+    //if(cart[i].hasOwnProperty(item)){ using the first for loop
+    if(cart[items].hasOwnProperty(item)){
+      //console.error(cart.hasOwnProperty(item));
+      //cart.splice(i,1) using the first for loop
+      cart.splice(items,1);
+      return cart;
     }
   }
-//  if(!found){
     console.log('That item is not in your cart.')
-//  }
 }
 
 function placeOrder(cardNumber){
