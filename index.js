@@ -18,25 +18,44 @@ function addToCart(item) {
 }
 
 function viewCart() {
-  for (var i = 0; i < cart.length; i++) {
-    console.log(`In your cart you have ${Object.keys} and ${Object.keys[i]}`)
+  const arrPrint = []
+    if(cart.length > 0) {
+      for (var i = 0; i < cart.length; i++) {
+        // example: {pizza: 24} - ['pizza']
+        var item = Object.keys(cart[i])[0]
+        var price = cart[i][item]
+        arrPrint.push(`${item} at $${price}`)
+      }
+      console.log(`In your cart, you have ${arrPrint.join(', ')}.`)
+    } else {
+      console.log("Your shopping cart is empty.")
+    }
   }
-}
 
 function total() {
   var price = 0
   cart.forEach(function(obj) {
     var itemName = Object.keys(obj)[0]
     price += obj[itemName]
-    return price;
   })
   return price;
 };
 
 function removeFromCart(item) {
-  // write your code here
-}
+  for (var i = 0; i < cart.length; i++) {
+      if (cart[i].hasOwnProperty(item)) {
+        cart.splice(i, 1); //
+        return cart;
+      }
+  }
+      console.log("That item is not in your cart.")
+    }
 
 function placeOrder(cardNumber) {
-  // write your code here
+  if(cardNumber) {
+    console.log(`Your total cost is $${total()}, which will be charged to the card ${cardNumber}.`)
+  } else {
+    console.log("We don't have a credit card on file for you to place your order.")
+  }
+ cart = [];
 }
