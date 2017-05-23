@@ -15,7 +15,7 @@ describe('#addToCart', function() {
   it("should add an item to the cart", function() {
     addToCart('pizza')
 
-    expect(getCart().length).toEqual(1);
+    expect(Object.keys(getCart()).length).toEqual(1);
   });
 
   it("logs that the item has been added", function() {
@@ -30,7 +30,7 @@ describe('#addToCart', function() {
 
   it("adds item dynamically", function() {
     addToCart('pizza');
-    expect(getCart()[0]['item']).toEqual(undefined)
+    expect(getCart()['item']).toEqual(undefined)
   })
 });
 
@@ -40,9 +40,9 @@ describe('#viewCart', function() {
     addToCart("puppy");
     addToCart("iPhone");
 
-    const socksCost = getCart()[0]["socks"];
-    const puppyCost = getCart()[1]["puppy"];
-    const iPhoneCost = getCart()[2]["iPhone"];
+    const socksCost = getCart()[0].itemPrice;
+    const puppyCost = getCart()[1].itemPrice;
+    const iPhoneCost = getCart()[2].itemPrice;
 
     viewCart();
 
@@ -64,9 +64,9 @@ describe('#total', function() {
     addToCart("puppy");
     addToCart("iPhone");
 
-    const socksCost = getCart()[0]["socks"];
-    const puppyCost = getCart()[1]["puppy"];
-    const iPhoneCost = getCart()[2]["iPhone"];
+    const socksCost = getCart()[0].itemPrice;
+    const puppyCost = getCart()[1].itemPrice;
+    const iPhoneCost = getCart()[2].itemPrice;
 
     const totalCost = socksCost + puppyCost + iPhoneCost;
 
@@ -125,11 +125,10 @@ describe('#placeOrder', function() {
 })
 
 function hasItem(c, item) {
-  for (let i = 0, l = c.length; i < l; i++) {
-    if (c[i].hasOwnProperty(item)) {
-      return true
+  for (var i = 0; i < c.length; i++) {
+    if (c[i].itemName == item) {
+      return true;
     }
   }
-
-  return false
+    return false;
 }
