@@ -44,9 +44,9 @@ function removeFromCart(item) {
   for (var i = 0; i < cart.length; i++) {
     var itemName = Object.keys(cart[i])[0];
     if (itemName === item) {
-      delete Object.keys(cart[i]([0];
+      delete Object.keys(cart[i])[0];
     }
-}
+}}
 
 function placeOrder(cardNumber) {
   // write your code here
