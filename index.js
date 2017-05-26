@@ -41,13 +41,27 @@ function total() {
 }
 
 function removeFromCart(item) {
+  var cartLength = cart.length;
   for (var i = 0; i < cart.length; i++) {
+    // index the 0-th element of the key (an array) of the object at the i-th element of cart
     var itemName = Object.keys(cart[i])[0];
     if (itemName === item) {
-      delete Object.keys(cart[i])[0];
+      cart.splice(i,i+1);
     }
-}}
+  }
+  var newCartLength = cart.length;
+  if (cartLength === newCartLength) {
+    console.log("That item is not in your cart.");
+ }else{
+    return cart;
+ }
+}
 
 function placeOrder(cardNumber) {
-  // write your code here
+  if (cardNumber !== undefined) {
+    console.log(`Your total cost is $${total()}, which will be charged to the card ${cardNumber}.`);
+    cart = [];
+  } else {
+    console.log("We don't have a credit card on file for you to place your order.");
+  }
 }
