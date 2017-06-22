@@ -40,8 +40,10 @@ function viewCart() {
   } else if (cartItems.length === 2) {
     console.log("In your cart, you have " + cartItems.join(" and ") + ".")
   } else {
-    console.log("In your cart, you have " + cartItems.slice(0, -1).join(", ") +
-     ", and " + cartItems[cartItems.length - 1] + ".")
+    cartItems[cartItems.length - 1] = `and ${cartItems[cartItems.length - 1]}`
+    console.log("In your cart, you have " + cartItems.join(", ") + ".");
+    // console.log("In your cart, you have " + cartItems.slice(0, -1).join(", ") +
+    //  ", and " + cartItems[cartItems.length - 1] + ".")
   }
 }
 
