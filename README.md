@@ -1,5 +1,8 @@
 # Online Shopping
 
+## TODO
++ This iteration of index.js still receives 7 fail errors when I test it using 'learn test'. I'm not sure why, so I'm moving past it for now and will come back to it later.
+
 ## Objectives
 + Model a shopping cart full of items as an array of objects in JavaScript.
 + Practice dynamically setting properties (keys) of an object.
