@@ -25,6 +25,16 @@ function viewCart() {
 		console.log("Your shopping cart is empty.")
     return;
 	}
+  else if (cart.length === 1) {
+		var items = [];
+		for (var i = 0; i < cart.length; i++) {
+			for (var item in cart[i]) {
+				items.push(item + " at $" + cart[i][item])
+			}
+		}
+		console.log("In your cart, you have " + items +".");
+    return
+	}
   else if (cart.length === 2) {
 		var items = [];
 		for (var i = 0; i < cart.length; i++) {
