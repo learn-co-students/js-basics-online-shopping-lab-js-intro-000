@@ -41,9 +41,6 @@ function viewCart () {
      else {
        console.log("In your cart, you have " + newArr.join(", ") + ".");
      }
-    //  else {
-    //
-    //  }
  }
  }
 
