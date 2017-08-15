@@ -23,7 +23,9 @@ function addToCart(itemName) {
 function viewCart () {
    if (cart.length === 0) {
      console.log("Your shopping cart is empty.")
-   } else {
+   }
+
+   else {
      var newArr = [];
      for (var i = 0; i < cart.length; i++) {
        for (var price in cart[i]) {
@@ -41,8 +43,7 @@ function viewCart () {
      else {
        console.log("In your cart, you have " + newArr.join(", ") + ".");
      }
- }
- }
+ }}
 
 function total() {
   var totalPrice = 0;
