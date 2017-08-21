@@ -33,13 +33,13 @@ console.log("In your cart, you have" + items.join(", ") + ".")
 }
 
 function total() {
-let t = 0
+let tot = 0
 for (var i = 0; i < cart.length; i++){
   for (var item in cart[i]){
-    t += cart[i][item]
+    tot += cart[i][item]
   }
 }
-return t
+return tot
 }
 
 function removeFromCart(item) {
