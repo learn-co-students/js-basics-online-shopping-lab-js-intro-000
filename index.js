@@ -1,121 +1,99 @@
 
-function setCart(newCart) {
-  cart = newCart;
+var cart = [];
+var cartTotal = 0;
+
+function getCart() {
+ return cart;
 }
+
+function setCart(c) {
+  cart = c;
+  return cart;
+}
+
+function addToCart(itemName) {
+  cart.push(Object.assign( {}, { [itemName]: Math.floor(Math.random()*100) }) );
+  console.log(`${itemName} has been added to your cart.`)
+  return cart;
+}
+
+function viewCart() {
+
+  var totalString;
+  var itemName;
+  var itemPrice;
+
+  if (cart.length > 2) {
+
+    totalString = "";
+
+    for (let i = 0; i < cart.length; i++ ) {
+      itemName = Object.keys(cart[i]);
+      itemPrice = cart[i][Object.keys(cart[i])];
+
+      if ((i + 1) != cart.length) {
+        var myString = `${itemName} at $${itemPrice}, `;
+        totalString += myString;
+      } else if ((i + 1) === cart.length) {
+        var myString = `and ${itemName} at $${itemPrice}.`;
+        totalString += myString;
+      }
+    }
+
+    console.log(`In your cart, you have ${totalString}`);
+
+  } else if (cart.length === 2) {
+
+    console.log(`In your cart, you have ${Object.keys(cart[0])} at $${cart[0][Object.keys(cart[0])]} and ${Object.keys(cart[1])} at $${cart[1][Object.keys(cart[1])]}.`)
+
+  } else if (cart.length === 1) {
+      itemName = Object.keys(cart[0]);
+      itemPrice = cart[0][itemName];
+      console.log(`In your cart, you have ${itemName} at $${itemPrice}.`);
+  } else {
+    console.log("Your shopping cart is empty.")
+  }
+}
+
+
+
 
 function total() {
-  let t = 0
+  var cartTotal = 0;
 
-  for (var i = 0, l = cart.length; i < l; i++) {
-    for (var item in cart[i]) {
-      t += cart[i][item]
-    }
+  for (let i = 0; i < cart.length; i++) {
+    cartTotal += cart[i][Object.keys(cart[i])];
   }
 
-  return t
+  return cartTotal;
 }
 
-//mycode
-var cart = [];
+function removeFromCart(item) {
 
-function getCart () {
-  return cart;
-}
+  var isItemInCart = false;
 
-function addToCart (item) {
-  var price = Math.floor(100*Math.random());
-  cart.push({[item]: price});
-  console.log(`${item} has been added to your cart.`);
-  return cart;
-}
-
-/* this works in console but was yielding a spy not called error in ide.
-function viewCart (){
-  if (cart.length === 0) {
-    console.log (`Your shopping cart is empty.`);
-  } else {
-    var cartArray = [];
-      for (var cartItems in cart) {
-        var myString = `, ${cartItems} at \$${cart[cartItems]}`;
-        cartArray.push(myString);
-      } console.log(`In your cart, you have${cartArray}.`);
-    }
-  }
-*/
-
-function viewCart (){
-  if (cart.length === 0) {
-    console.log (`Your shopping cart is empty.`);
-  } else {
-    var firstString = "In your cart, you have"
-      for (var i = 0; i < cart.length; i++) {
-        var objectName = cart[i];
-        var itemName = Object.keys(cart[i]);
-        var itemPrice = objectName[itemName];
-        firstString = `${firstString} ${itemName} at $${itemPrice}`
-        if (i < cart.length-1){ //determines punctuation
-          firstString = `${firstString},`
-        }else{
-          firstString = `${firstString}.`
-        }
-      } console.log(firstString)
-
-      }
-  }
-
-
-function removeFromCart(itemToRemove){
-  for (var i = 0; i < cart.length; i++){
-    var itemToCompare = cart[i];
-    if (itemToCompare.hasOwnProperty(itemToRemove)){
+  for (let i = 0; i < cart.length; i++) {
+    if (cart[i].hasOwnProperty(item)) {
       cart.splice(i, 1);
-      return cart; // the return command breaks out of the function!!
+      isItemInCart = true;
     }
-  } console.log("That item is not in your cart.")
-}
-/*
-function removeFromCart(itemToRemove){
-  var itemFound = false;
-  var itemAtIndex = "";
-  for (var i = 0; (i < cart.length || itemFound === false); i++){
-    var itemAtIndex = Object.keys(cart[i])
-    if (itemAtIndex === itemToRemove){
-      cart.splice(i, 1);
-      itemFound = true;
-      return cart;
-    } else if ((i === cart.length - 1) && (itemFound === false)) {
-      console.log("That item is not found.")
-    }
-
   }
-}
-*/
 
-/*
-function removeFromCart(itemToRemove){
-  var i = -1;
-  var itemFound = false;
-	while (i < cart.length); {
-    i++;
-    var objectName = cart[i];
-	  if (objectName.hasOwnProperty(itemToRemove)){
-        // remove item and return cart &
-        cart.splice(i, 1);
-        itemFound = true;
-        return cart;
-      } else if ((i === cart.length - 1) && (itemFound === false)) {
-          console.log("This item is not found");
-   	  }
-  }
-}
-*/
-
-function placeOrder (cardNumber){
-  if (!cardNumber) {
-    console.log ("We don\'t have a credit card on file for you to place your order.");
+  if (isItemInCart === true) {
+    return cart;
   } else {
-    var yourTotal = total();
-    console.log (`Your total cost is $${yourTotal}, which will be charged to the card ${cardNumber}.`);
-    cart = [];
+    console.log("That item is not in your cart.");
+    return cart;
   }
+}
+
+function placeOrder(cardNumber) {
+
+  if (cardNumber === undefined) {
+      console.log("Sorry, we don't have a credit card on file for you.");
+      return false;
+    } else {
+        console.log(`Your total cost is $${total()}, which will be charged to the card ${cardNumber}.`);
+        cart = [];
+    }
 }
