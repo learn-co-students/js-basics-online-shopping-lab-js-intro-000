@@ -28,7 +28,12 @@ if (cart.length === 0) {
     items.push(item + " at $" + cart[i][item])
   }
 }
-console.log("In your cart, you have" + items.join(", ") + ".")
+if (cart.length < 3){
+console.log("In your cart, you have " + items.join(" and ") + ".")
+}
+else {
+console.log("In your cart, you have " items.slice(0, -1).join(", ") + ", and " + items.slice(-1) + ".")
+}
 }
 }
 
