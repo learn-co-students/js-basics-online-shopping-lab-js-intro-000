@@ -28,15 +28,13 @@ function viewCart() {
     const price1 = cart[1][Object.keys(cart[1])]
     console.log(`In your cart, you have ${Object.keys(cart[0])} at $${price} and ${Object.keys(cart[1])} at $${price1}.`)
   }else {
-    var lastItemKey = Object.keys(cart[cart.length -1])[0]
-    var lastItemPrice = " and " + lastItemKey + " at $" + cart[cart.length -1][lastItemKey] + "."
     var concat = []
-    for (var i = 0; i < cart.length-1; i++) {
-      var key = Object.keys(cart[i])[0]
-      var price = cart[i][key]
+    cart.forEach(function(item,index){
+      var key = Object.keys(item)[0]
+      var price= item[key]
       concat.push(" "+ key + " at $" + price)
-    }
-    concat.push(lastItemPrice)
+    })
+    concat[concat.length -1] = " and" + concat[concat.length -1] + "."
     console.log("In your cart, you have" + concat)
   }
 }
@@ -45,15 +43,28 @@ function viewCart() {
 
 function total() {
   var total = 0
-  for (var i = 0; i < cart.length; i++) {
+  cart.forEach(function(item,index){
+    var key = Object.keys(item)[0]
+    total += item[key]
+  })
+/*  for (var i = 0; i < cart.length; i++) {
     var key = Object.keys(cart[i])[0]
     total += cart[i][key]
   }
+*/
   return total
 }
 
 function removeFromCart(item) {
   var orginalLength = cart.length
+
+  cart.forEach(function(groceryItem,index){
+    if (groceryItem.hasOwnProperty(item)) {
+      cart.splice(index,1)
+    }else {
+    }
+  })
+/*
   for (var i = 0; i < cart.length; i++) {
     var obj = cart[i]
     if (obj.hasOwnProperty(item)) {
@@ -61,6 +72,7 @@ function removeFromCart(item) {
     }else {
     }
   }
+*/
   if (orginalLength === cart.length){
     console.log("That item is not in your cart.")
   }else {
