@@ -9,43 +9,53 @@ function setCart(c) {
   return cart;
 }
 
-function addToCart(item) {
- var price = Math.floor(100*(Math.random()));
- var itemObj = {[item]: price};
- cart.push(itemObj);
- console.log(`${item} has been added to your cart.`);
- return cart;
+function addToCart(item)
+{
+   var price = Math.floor(Math.random()*100)+1;
+   
+   cart.push({[item]: price});
+   console.log(`${item} has been added to your cart.`);
+   return cart;
 }
 
-function viewCart() {
+//addToCart("glove");
+//addToCart("onion");
+
+function viewCart()
+{
+  debugger;
+  const l = cart.length
   var cartItems = [];
-  if (cart.length === 0)
+  
+  if (l === 0)
   {
     console.log('Your shopping cart is empty.');
-
   } 
-  else if (cart.length === 1) 
+  
+  for(let i=0; i<l; i++)                  //for(key in cart)
   {
-    var printOneItem = `In your cart, you have ${Object.keys(cart[0])} at $${cart[0][Object.keys(cart[0])]}.`;
-    console.log(printOneItem);
+    let cartItem = cart[i];               //cart[key];
+    let item = Object.keys(cartItem)[0];  
+    let price = cartItem[item];
+    
+    cartItems.push(`${item} at \$${price}`);
   } 
-  else if (cart.length === 2)
-  {
-    var printTwoItems = `In your cart, you have ${Object.keys(cart[cart.length-2])} at $${cart[cart.length-2][Object.keys(cart[cart.length-2])]} and ${Object.keys(cart[cart.length-1])} at $${cart[cart.length-1][Object.keys(cart[cart.length-1])]}.`;
-    console.log(printTwoItems);
-  } 
-  else
-  {
-    for (var i = 0; i < cart.length-1; i++)
-    {
-      //console.log(cart[i]);
-      
-      cartItems.push(` ${Object.keys(cart[i])} at $${cart[i][Object.keys(cart[i])]}`)
-          }
-          var printThreeOrMoreItems = `In your cart, you have${cartItems}, and ${Object.keys(cart[cart.length-1])} at $${cart[cart.length-1][Object.keys(cart[cart.length-1])]}.`;
-          console.log(printThreeOrMoreItems);
+  
+  switch(cartItems.length) {
+    case 1:
+      break;
+    case 2:
+      cartItems = cartItems.join(" and ");
+      break;
+    default:
+      cartItems[l-1] = "and ".concat(cartItems[l-1]);
+      cartItems = cartItems.join(", ");
   }
+  
+  console.log(`In your cart, you have ${cartItems}.`);
 }
+
+//viewCart();
 
 function total() {
   var pricePerItemInCart = [];
@@ -53,14 +63,11 @@ function total() {
   
   for(var i = 0; i < cart.length; i++)
   {
-    var itemPrice = cart[i][Object.keys(cart[i])]
-    pricePerItemInCart.push(itemPrice)
+    for (let item in cart[i]) {
+      totalPrice += cart[i][item];      // cart[i][item] = cart[i]"glove": [item] means property in an array
+    }
   }
   
-  for (var j =0; j<pricePerItemInCart.length; j++)
-  {
-    totalPrice = pricePerItemInCart[j]+=totalPrice
-  }
   return totalPrice;
 }
 
