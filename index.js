@@ -16,6 +16,8 @@ function addToCart(item) {
 
  var itemObj={itemName:item, itemPrice:Math.floor((Math.random() * 100) + 1)}
  getCart().push(itemObj)
+
+ return '${item} has been added to your cart'
 }
 
 addToCart('Apple')
