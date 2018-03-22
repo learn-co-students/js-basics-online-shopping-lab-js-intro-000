@@ -69,15 +69,21 @@ function removeFromCart(item) {
   }
 
   if (found==='Yes'){
-    return getCart.splice(location, 1)
-  else
-    return 'That item is not in your cart.'
-  }
-
-
+    return getCart().splice(location, 1)
+      }
+  else       return 'That item is not in your cart.'
 
 }
 
 function placeOrder(cardNumber) {
+  if (arguments[0] == undefined){
+    return `Sorry, we don't have a credit card on file for you.`
+  }
+  else{
+
+    var sum=total()
+    setCart([])
+    return `Your total cost is $${sum}, which will be charged to the card ${cardNumber}.`
+  }
   // write your code here
 }
