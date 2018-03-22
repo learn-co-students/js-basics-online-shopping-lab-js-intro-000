@@ -58,11 +58,23 @@ function total() {
 
 function removeFromCart(item) {
   // write your code here
+  var found, location=0;
+
   for (var i=0;i<getCart().length;i++){
-    var message =`That item is not in your cart.`
-    //console.log(`${getCart()[i].itemPrice}`)
+
+    if (item===getCart()[i].itemName){
+        location=i;
+        found='Yes';
+    }
   }
-  return message
+
+  if (found==='Yes'){
+    return getCart.splice(location, 1)
+  else
+    return 'That item is not in your cart.'
+  }
+
+
 
 }
 
