@@ -48,15 +48,22 @@ function viewCart() {
 
 function total() {
   // write your code here
+  var total=0;
   for (var i=0;i<getCart().length;i++){
     var total =total+ getCart()[i].itemPrice
-
+    //console.log(`${getCart()[i].itemPrice}`)
   }
   return total
 }
 
 function removeFromCart(item) {
   // write your code here
+  for (var i=0;i<getCart().length;i++){
+    var message =`That item is not in your cart.`
+    //console.log(`${getCart()[i].itemPrice}`)
+  }
+  return message
+
 }
 
 function placeOrder(cardNumber) {
