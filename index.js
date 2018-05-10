@@ -33,9 +33,9 @@ function viewCart() {
 
   for (var i = 0; i < n; i++) {
     if (i === n-1) {
-        string = string + `and ${cart[i].itemName} at $${cart[i].itemPrice}.`
+        string += `and ${cart[i].itemName} at $${cart[i].itemPrice}.`
     } else {
-        string = string + `${cart[i].itemName} at $${cart[i].itemPrice}, `
+        string += `${cart[i].itemName} at $${cart[i].itemPrice}, `
     }
     }
     return string
