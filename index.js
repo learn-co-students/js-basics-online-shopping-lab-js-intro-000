@@ -28,7 +28,7 @@ function addToCart(item) {
   }
 
   cart.push(itemAdded); //Add the item to the cart
-  return itemAdded.itemName + " has been added to your cart." //Return string stating success
+  return `${itemAdded.itemName} has been added to your cart.` //Return string stating success
 }
 
 /**
@@ -37,7 +37,6 @@ function addToCart(item) {
 function viewCart() {
   var numItems = cart.length;
   var lastItem = cart.length - 1;
-  var prefix = "In your cart, you have ";
   var multipleItems = "";
 
   switch(numItems){
@@ -47,22 +46,21 @@ function viewCart() {
 
     case 1:
     //return sentence with single item
-    return prefix + cart[0].itemName + " at $" + cart[0].itemPrice + ".";
+    return `In your cart, you have ${cart[0].itemName} at $${cart[0].itemPrice}.`;
 
     case 2:
     //return sentence with two items
-    return prefix + cart[0].itemName + " at $" + cart[0].itemPrice + ", and " +
-                    cart[1].itemName + " at $" + cart[1].itemPrice + "."
+    return `In your cart, you have ${cart[0].itemName} at $${cart[0].itemPrice}, and ${cart[1].itemName} at $${cart[1].itemPrice}.`
 
     default:
       //Loop all items except last item and add them to multipleItems for sentence
       for(let i = 0; i < lastItem; i++){
-        multipleItems += cart[i].itemName + " at $" + cart[i].itemPrice + ", "
+        multipleItems += `${cart[i].itemName} at $${cart[i].itemPrice}, `
       }
       //Add the vernacular for the final sentence to multpipleItems
-      multipleItems += "and " + cart[lastItem].itemName + " at $" + cart[lastItem].itemPrice + "."
+      multipleItems += `and ${cart[lastItem].itemName} at $${cart[lastItem].itemPrice}.`
       //Return final sentence
-    return prefix + multipleItems;
+    return `In your cart, you have ${multipleItems}`;
   }
 }
 
@@ -111,6 +109,6 @@ function placeOrder(cardNumber) {
   if(!cardNumber){
     return "Sorry, we don't have a credit card on file for you.";
   } else {
-    return "Your total cost is $" + cost + ", which will be charged to the card " + cardNumber + "."
+    return `Your total cost is $${cost}, which will be charged to the card ${cardNumber}.`
   }
 }
