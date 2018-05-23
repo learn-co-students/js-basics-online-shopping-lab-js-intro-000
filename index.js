@@ -42,7 +42,7 @@ function viewCart() {
   switch(numItems){
     case 0:
     //return sentence with empty cart
-    return "Your shopping cart is empty.";
+    return `Your shopping cart is empty.`;
 
     case 1:
     //return sentence with single item
@@ -92,7 +92,7 @@ function removeFromCart(item) {
   }
   //If item was not in the cart let us know, otherwise return the cart
   if(!itemPresent){
-    return "That item is not in your cart."
+    return `That item is not in your cart.`
   } else {
     return cart;
   }
@@ -107,7 +107,7 @@ function placeOrder(cardNumber) {
     cart.shift();
   }
   if(!cardNumber){
-    return "Sorry, we don't have a credit card on file for you.";
+    return `Sorry, we don't have a credit card on file for you.`;
   } else {
     return `Your total cost is $${cost}, which will be charged to the card ${cardNumber}.`
   }
