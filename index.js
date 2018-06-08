@@ -33,7 +33,7 @@ function viewCart() {//credit to arellaEG because the learn IDE lost my code on 
       str+= `${cart[i]['itemName']} at $${cart[i]['itemPrice']}, `}
     str+=`and ${cart[i]['itemName']} at $${cart[i]['itemPrice']}.`
   }}
-  return str
+  return str;
 }
 
 function total() {
@@ -47,12 +47,19 @@ function total() {
 
 function removeFromCart(item) {
   for (var i = 0; i < cart.length; i++) {
-
+    var counter = 0;
     if (item === cart[i].itemName)
     {
       cart.splice(i,1);
+      counter++;
     }
+  }
+
+  if (counter > 0){
     return cart;
+  }
+  else {
+    return "That item is not in your cart.";
   }
 }
 
