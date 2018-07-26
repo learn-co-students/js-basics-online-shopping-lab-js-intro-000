@@ -57,13 +57,18 @@ function viewCart() {
      }
      
   }
-  return string
+  return string 
 } 
 
 
 function total() {
-  // write your code here
+  var sum = 0
+  for (var i = 0;i< cart.length; i++) {
+    sum = sum +  cart[i].itemPrice
+  }
+  return sum
 }
+
 
 function removeFromCart(item) {
   // write your code here
