@@ -35,7 +35,7 @@ function viewCart() {
       if(i === 0){
         string += `, and `
       }
-      if(i === next().value)) {
+      if(i === 1){
         string += `.`
       }
       
