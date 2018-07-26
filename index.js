@@ -17,19 +17,30 @@ function addToCart(item) {
  }
 }
 
+
 function viewCart() {
+   var array = []
   if(cart.length === 0){
     return "Your shopping cart is empty."
-  } else {
-  if(cart.length > 0) {
-    var item = cart.itemName()
-    var price = cart.itemPrice()
-    for (var i = 0; i < cart.length; i++) {
-    return `In your cart, you have, ${ item[i] } at $${ price[i] }.`
+  } else if(cart.length === 1) {
+        for (var i = 0; i < cart.length; i++) {
+    array.push(`In your cart, you have ${ cart[i].itemName } at $${ cart[i].itemPrice }.`)
     }
-    }
+  } 
+  else if(cart.length === 2) {
+         for ( i = 0;i< cart.length; i++) {
+    array.push(`In your cart, you have ${ cart[i].itemName } at $${ cart[i].itemPrice }, and ${ cart[i].itemName } at $${ cart[i].itemPrice }.`)
+     }
   }
-}
+   else if(cart.length === 3) {
+         for ( i = 0;i< cart.length; i++) {
+    array.push(`In your cart, you have ${ cart[i].itemName } at $${ cart[i].itemPrice }, and ${ cart[i].itemName } at $${ cart[i].itemPrice }, and ${ cart[i].itemName } at $${ cart[i].itemPrice }.`)
+     }
+  }
+  return array
+} 
+
+
 
 function total() {
   // write your code here
