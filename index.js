@@ -1,3 +1,4 @@
+
 var cart = [];
 
 function getCart() {
@@ -70,9 +71,17 @@ function total() {
 }
 
 
-function removeFromCart(item) {
-  // write your code here
+function removeFromCart(remItem) {
+if(cart.includes(remItem)) {
+for(i = 0; i < cart.length ; i++){
+  cart.indexOf(remItem))
+  //Object.keys(cart)
+
+ cart.splice(,1)
 }
+}
+}
+
 
 function placeOrder(cardNumber) {
   // write your code here
