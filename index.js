@@ -36,9 +36,9 @@ function viewCart() {
 
       itemName = Object.values(cart[i])
       itemPrice = itemName.splice(1)
-      if(count == 1)
+      if(count == 1){
       string += `${itemName} at $${itemPrice}`
-      else if(count == 2){
+    }else if(count == 2){
       string += `${itemName} at $${itemPrice}, and `
       count--;
     }else if(count >2){
@@ -63,17 +63,14 @@ function total() {
 }
 
 function removeFromCart(item) {
-  // write your code here
- var itemLeft = Object.values(cart);
- itemLeft.forEach(function(element){
-   if(item == element )
-   return 'That item is nor in your cart';
- else{
-   delete cart.item
- }});
-
-
-
+  //write your code here
+  for(var i = 0; i < cart.length; i++){
+    if(item === cart[i].itemName){
+      //var ret =
+      return cart.splice(i,1)
+    }
+    }
+    return "That item is not in your cart."
 }
 
 function placeOrder(cardNumber) {
@@ -81,10 +78,11 @@ function placeOrder(cardNumber) {
   if(!cardNumber)
   return 'Sorry, we don\'t have a credit card on file for you.'
   else {
+    var ret = total()
     for(let i = 0; i<cart.length; i++){
       cart.pop();
     }
-    return 'Your total cost is $${total()}, which will be charged to the card ${placeOrder(cardNumber)} .'
+    return `Your total cost is $${ret}, which will be charged to the card ${cardNumber}.`
   }
 
 }
