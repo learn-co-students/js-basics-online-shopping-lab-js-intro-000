@@ -70,19 +70,32 @@ function total() {
   return sum
 }
 
+//cart = ["vanilla", "watermelon", "yams")
 
-function removeFromCart(remItem) {
-if(cart.includes(remItem)) {
-for(i = 0; i < cart.length ; i++){
-  cart.indexOf(remItem))
-  //Object.keys(cart)
+//   const index = cart.findIndex(indexName => indexName === `${ itemName }`);
+// for (var i = 0;i< cart.length; i++)  {
+//   if(index > 0 ) {
+//   cart.splice(index,1);
+//   }
+//   {
+//var index = cart.indexOf(`${item}`);
+  //var itemRem = cart[i].item
+  //var index = cart.indexOf(`${item}`);
 
- cart.splice(,1)
+function removeFromCart(item) {
+for (var i = 0;i< cart.length; i++)  {
+  if(cart[i].itemName === item) {
+   cart.splice(i,1)
+   return cart;
+   }
+} 
+  return `That item is not in your cart.`;
 }
-}
-}
+
 
 
 function placeOrder(cardNumber) {
   // write your code here
 }
+
+
