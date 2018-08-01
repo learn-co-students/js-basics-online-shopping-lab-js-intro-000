@@ -22,42 +22,23 @@ function addToCart(item) {
 
 function viewCart() {
    var string = 'In your cart, you have '
-  if(cart.length === 0){
-    return "Your shopping cart is empty."
-  } else if(cart.length === 1) {
-        for (var i = 0; i < cart.length; i++) {
-    string += `${ cart[i].itemName } at $${ cart[i].itemPrice }.`
+   if(cart.length === 0){
+      return "Your shopping cart is empty."
+  } else if (cart.length === 1) {
+      for (var i = 0; i < cart.length; i++) {
+      string += `${ cart[i].itemName } at $${ cart[i].itemPrice }.`
     }
   } 
-  else if(cart.length === 2) {
-         for ( i = 0;i< cart.length; i++) {
-    string += `${ cart[i].itemName } at $${ cart[i].itemPrice }`
-      
-      if(i === 0){
-        string += `, and `
+    else {
+         for (i = 0;i< cart.length; i++) {
+           if (i < cart.length - 1) {
+           string += `${ cart[i].itemName } at $${ cart[i].itemPrice }, `  
+         }
+          else {
+            string += `and ${ cart[i].itemName } at $${ cart[i].itemPrice }.`
+          }
+        }
       }
-      if(i === 1){
-        string += `.`
-      }
-      
-     }
-  }
-   else if(cart.length === 3) {
-         for ( i = 0;i< cart.length; i++) {
-    string += `${ cart[i].itemName } at $${ cart[i].itemPrice }`
-      
-      if(i === 0) {
-        string += `, `
-      }
-      if(i === 1) {
-        string += `, and `
-      }
-      if(i === 2) {
-        string += `.`
-      }
-     }
-     
-  }
   return string 
 } 
 
