@@ -90,7 +90,7 @@ function placeOrder(cardNumber) {
   if(cardNumber) {
     var cost = total(cart.itemPrice)
     cart.length = 0
-    return `Your total cost is $${cost}, which will be charged to the card ${cardNumber}.`
+    return `Your total cost is $${ cost }, which will be charged to the card ${ cardNumber }.`
   }
 }
 
