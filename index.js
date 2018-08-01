@@ -65,22 +65,11 @@ function viewCart() {
 function total() {
   var sum = 0
   for (var i = 0;i< cart.length; i++) {
-    sum = sum +  cart[i].itemPrice
+    sum +=  cart[i].itemPrice
   }
   return sum
 }
 
-//cart = ["vanilla", "watermelon", "yams")
-
-//   const index = cart.findIndex(indexName => indexName === `${ itemName }`);
-// for (var i = 0;i< cart.length; i++)  {
-//   if(index > 0 ) {
-//   cart.splice(index,1);
-//   }
-//   {
-//var index = cart.indexOf(`${item}`);
-  //var itemRem = cart[i].item
-  //var index = cart.indexOf(`${item}`);
 
 function removeFromCart(item) {
 for (var i = 0;i< cart.length; i++)  {
@@ -95,7 +84,14 @@ for (var i = 0;i< cart.length; i++)  {
 
 
 function placeOrder(cardNumber) {
-  // write your code here
+  if(!cardNumber) {
+    return `Sorry, we don't have a credit card on file for you.`
+  }
+  if(cardNumber) {
+    var cost = total(cart.itemPrice)
+    cart.length = 0
+    return `Your total cost is $${cost}, which will be charged to the card ${cardNumber}.`
+  }
 }
 
 
