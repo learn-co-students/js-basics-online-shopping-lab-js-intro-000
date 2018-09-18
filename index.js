@@ -49,10 +49,37 @@ function total() {
 }
 
 function removeFromCart(item) {
-  // write your code here
+  var itemToRemove = searchCartForItemToRemove(item)
+  return itemToRemove ? removeItemFromCart(itemToRemove) : notifyUserThereIsNoItemToRemove()
+  }// write your code here
+
+  function searchCartForItemToRemove(itemString) {
+      var searchResults
+      for (let i = 0;i <cart.length; i++) {
+
+          if (itemString === cart[i].itemName) {
+            searchResults = cart[i]}
+          }
+  return searchResults
 }
+  function removeItemFromCart(itemToRemove) {
+    var indexOfItemToRemove = cart.indexOf(itemToRemove)
+
+    cart.splice(indexOfItemToRemove,1)
+
+}
+  function notifyUserThereIsNoItemToRemove() {
+    return "That item is not in your cart."
+  }
+
 
 function placeOrder(cardNumber) {
-  // write your code here
+  if (arguments[0] == undefined) {
+    return "Sorry, we don't have a credit card on file for you."
+    } else {
+     var sumCost = total()
+     setCart([])
+     return `Your total cost is $${sumCost}, which will be charged to the card ${cardNumber}.`
 
+   }
 }
