@@ -13,7 +13,7 @@ function addToCart(item) {
   var price = Math.floor(Math.random() * 100) + 1;
   var newItem = {
     itemName : item,
-    itemPrice : price, };
+    itemPrice : price };
 
     cart.push(newItem);
 
@@ -45,22 +45,30 @@ function viewCart() {
 function total() {
   let cartTotal = 0
 
-  for (let i = 0; i < cart.length; i++)
+  for (let i = 0; i < cart.length; i++) {
     cartTotal += cart[i].itemPrice
+  }
     return cartTotal
   }
 
 
 
 function removeFromCart(item) {
+
+  var removed = 0;
   for (let i = 0; i < cart.length; i++){
 
     if (cart[i].itemName === item) {
       cart.splice(i, 1);
-      return cart
+      removed = 1;
+      i--;
     }
   }
+  if (removed === 1) {
+  return cart
+} else {
   return 'That item is not in your cart.'
+}
 
 }
 
