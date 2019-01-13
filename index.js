@@ -85,17 +85,16 @@ function placeOrder(cardNumber) {
   
   var strRet = '';
   
-  console.warn(`placeOrder - begin - cardNumber: ${cardNumber}`);
+  // console.warn(`placeOrder - begin - cardNumber: ${cardNumber}`);
   if (cardNumber === undefined) {
     strRet = 'Sorry, we don\'t have a credit card on file for you.';
   } else {
     strRet = `Your total cost is \$${total()}, which will be charged to the card ${cardNumber}.`;
-    // while (cart.length>0) {
-      strRet = cart.length;
-      cart.unshift();
-      console.warn(`   unshift - (${strRet})-> ${cart.length}`);
-    // }
+    while (cart.length>0) {
+      cart.shift();
+      // console.warn(`   shift - (${strRet})-> ${cart.length}`);
+    }
   }
-  console.warn(`placeOrder - end`);
+  // console.warn(`placeOrder - end`);
   return strRet;
 }
