@@ -63,41 +63,28 @@ function removeFromCart( item ) {
     for ( var i = 0; i < getCart().length; i++ ) {
       if ( getCart()[ i ].itemName === item ) {
         itemToRemove = getCart()[ i ];
-        var index = getCart().indexOf( itemToRemove );
-        cart.splice( index, 1 )
-      }
-      else {
-        return "That item is not in your cart."
+
+        if ( itemToRemove ) {
+          var index = getCart().indexOf( itemToRemove );
+          cart.splice( index, 1 )
+        }
       }
     }
+    if ( !itemToRemove ) {
+      return "That item is not in your cart."
+    }
+
     return cart;
   }
 }
 
-// function removeFromCart(item) {
-  // var itemToRemove = findItem( item );
-  // return itemToRemove ? removeItem( itemToRemove ) : "That item is not in your cart."
-// }
-
-// function findItem(item) {
-//   var itemToRemove;
-//
-//   if ( item ) {
-//     for ( var i = 0; i < getCart().length; i++ ) {
-//       if ( getCart()[ i ].itemName === item ) {
-//         itemToRemove = getCart()[ i ];
-//       }
-//     }
-//   }
-//
-//   return itemToRemove;
-// }
-//
-// function removeItem(itemToRemove) {
-//   var index = getCart().indexOf(itemToRemove);
-//   getCart().splice(index, 1)
-// }
-
-function placeOrder(cardNumber) {
-  // write your code here
+function placeOrder( cardNumber ) {
+  if ( cardNumber ) {
+    var totalCharge = total();
+    cart = [];
+    return `Your total cost is $${ totalCharge }, which will be charged to the card ${ cardNumber }.`
+  }
+  else {
+    return "Sorry, we don't have a credit card on file for you."
+  }
 }
