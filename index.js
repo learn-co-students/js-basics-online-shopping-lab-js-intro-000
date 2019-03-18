@@ -19,11 +19,18 @@ function viewCart() {
   if (cart.length > 0) {
     var inventory = []
     for (var i in cart) {
-      var nameHolder = Object.entries((cart)[i])[1]
-      var priceHolder = Object.entries((cart)[i])[3]
-      inventory.push(`${nameHolder[0]} at $${priceHolder[1]}`)
+      var cartHolder = cart[i]
+      var nameHolder = cartHolder.itemName
+      var priceHolder = cartHolder.itemPrice
+      inventory.push(` ${nameHolder} at $${priceHolder}`)
     }
-    return `In your cart, you have ${inventory}.`
+    if (inventory.length === 1) {
+      return `In your cart, you have${inventory}.`
+    }
+    else {
+      var inventoryLast = inventory.pop()
+      return `In your cart, you have${inventory}, and${inventoryLast}.`
+    }
   }
   else {
     return `Your shopping cart is empty.`
@@ -33,22 +40,23 @@ function viewCart() {
 function total() {
   let cartTotal = []
   for (let i = 0; i < cart.length; i++){
-    cartTotal.push(cart[i].itemPrice)
+    var toPush = cart[i]
+    cartTotal.push(toPush.itemPrice)
   }
   return cartTotal.reduce((accumulator, currentValue) => accumulator + currentValue)
 }
 
 function removeFromCart(item) {
   for (var i in cart) {
-    if (cart[i].itemName === item) {
-    return cart.splice(i,1)
-
-    }
-    else {
-      return `That item is not in your cart.`
+    var toCheck = cart[i]
+    if (toCheck.itemName === item) {
+      cart.splice(i,1)
+      return cart
     }
   }
+  return 'That item is not in your cart.'
 }
+
 
 function placeOrder(cardNumber) {
   if (cardNumber === undefined){
@@ -56,7 +64,8 @@ function placeOrder(cardNumber) {
     return `Sorry, we don't have a credit card on file for you.`
   }
   else {
-    console.log(`Your total cost is $${total()}, which will be charged to the card ${cardNumber}.`)
-    return (`Your total cost is $${total()}, which will be charged to the card ${cardNumber}.`), (cart=[])
+    var totalCart = total()
+    cart.length = 0
+    return (`Your total cost is $${totalCart}, which will be charged to the card ${cardNumber}.`)
   }
 }
