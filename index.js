@@ -57,48 +57,34 @@ function total() {
 
 function removeFromCart(item) {
   // write your code here
-
-  for (var i = 0; i < cart.length; i++){
-    if (cart[i].hasOwnProperty(item)){
-      cart.splice((i-1), 1)
-      delete cart[i];
-      return cart
-    }
-
-  }
-
-  return "That item is not in your cart.";
-  return cart;
-}
-console.log(cart);
-/*
   for(let i = 0; i<cart.length;i++){
-    if(Object.keys(cart[i]) ===item){
+    if(cart[i].itemName === item){
 cart = [...cart.slice(0,i),...cart.slice(i+1)];
 return cart;
     }
     }
+  return "That item is not in your cart.";
+  return cart;
+}
+/*
+
     */
 
 
 function placeOrder(cardNumber) {
   // write your code here
+  let output;
   if (cardNumber){
-    return `Your total cost is $${total()}, which will be charged to the card ${cardNumber}.`;
+  output = `Your total cost is $${total()}, which will be charged to the card ${cardNumber}.`;
     for (var i = cart.length; i= 0; i--) {
       cart.pop();
   }
-  }
-return "Sorry, we don't have a credit card on file for you.";
+} else {
+output = "Sorry, we don't have a credit card on file for you.";
+}
 cart = [];
 cart.length = 0;
+return output;
   return cart;
-/* if (cardNumber === undefined) {
-    console.log('Sorry, we don\'t have a credit card on file for you.')
-  } else {
-    console.log(`Your total cost is $${total()}, which will be charged to the card ${cardNumber}.`);
-  }
-  cart = [];
-}
- */
+
 }
