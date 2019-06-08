@@ -4,6 +4,16 @@ var cart = [];
 function getRandomNum(min, max){
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+//Search for item to remove
+function searchForItemToRemove(item) {
+  var searchResult;
+  for (var i = 0; i < getCart().length; i++) {
+    if(getCart()[i].itemName === item) {
+      searchResult = getCart()[i]
+    }
+  }
+  return searchResult;
+}
 
 function getCart() {
  return cart;
@@ -57,9 +67,23 @@ function total() {
 
 function removeFromCart(item) {
   // write your code here
+  var itemToRemove = searchForItemToRemove(item)
+  if(!itemToRemove){
+    return "That item is not in your cart.";
+  }else {
+    var indexOfItemToRemove = cart.indexOf(itemToRemove)
+    getCart().splice(indexOfItemToRemove, 1)
+  }
 
 }
 
 function placeOrder(cardNumber) {
   // write your code here
+  if(arguments[0] == undefined) {
+    return "Sorry, we don't have a credit card on file for you.";
+  }else {
+    var sumToCharge = total();
+    setCart([]);
+    return `Your total cost is $${sumToCharge}, which will be charged to the card ${cardNumber}.`
+  }
 }
