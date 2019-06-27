@@ -33,8 +33,8 @@ function viewCart() {
       return `In your cart, you have ${list[0]}.`
     } else {
       //if list contains two or more items
-      var buffer = list.join(", ")
-      //add "and" before the last element
+      var buffer = list.join(", ") //add comma after every element
+      //add "and" before the last element and finish the sentence with "."
       buffer = buffer.replace(`${list[list.length-1]}`, `and ${list[list.length-1]}.`)
       return `In your cart, you have ${buffer}`
     }
@@ -46,8 +46,8 @@ function total() {
   var i = 0
   var sum = 0
   while(i < cart.length) {
-    sum += cart[i].itemPrice
-    i += 1
+    sum += cart[i].itemPrice //add the price on the list
+    i += 1 //iterate
   }
   return sum
 }
@@ -55,8 +55,8 @@ function total() {
 function removeFromCart(item) {
   // write your code here
   for (var i = 0; i < cart.length; i++) {
-    if (cart[i].itemName == item) {
-      cart.splice(i, 1)
+    if (cart[i].itemName == item) { //if item in cart is the same as the given item name
+      cart.splice(i, 1) //remove the item
       return cart
     }
   }
@@ -68,7 +68,7 @@ function placeOrder(cardNumber) {
   if (!cardNumber) {
     return "Sorry, we don't have a credit card on file for you."
   } else {
-    var cost = total()
+    var cost = total() //calculating costs
     cart = [] //emptying cart
     return `Your total cost is $${cost}, which will be charged to the card ${cardNumber}.`
   }
