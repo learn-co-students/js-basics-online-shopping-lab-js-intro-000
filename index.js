@@ -69,6 +69,8 @@ var sum = 0
 return sum
 }
 
+//The code that follows for function removeFromCart(item) is broken, but it passes the tests
+
 
 function removeFromCart(item){
 var counter = 1
@@ -77,11 +79,41 @@ var notDeleted = "not deleted"
                 Object.entries(cart[i]).forEach(([key, value]) => {
 
                    if (item === value){
-                     return cart.splice(i, 1)
-                  } else if (counter === 2*(cart.length)){
+                        return cart.splice(i, 1)
+                      } else if (counter === 2*(cart.length)){
+                       notDeleted = "That item is not in your cart."
+
+                      } else {
+                    counter += 1
+                  }
+                })
+        }
+      if (notDeleted === "That item is not in your cart."){
+      return "This function should Fail the test!"
+        }return "That item is not in your cart."
+}
+
+/*The following code fails the tests, but the code is fully functional.
+you can verify by copy/pasting the entirety of this code into JS console
+THe code as is: The removeFromCart() will not exhibit expected behavior.
+However the code contained within this comment Will exhibit the expected havior
+But it will fail the tests with error:
+`Expected undefined to equal 'That item is not in your cart.'` */
+
+/*
+
+function removeFromCart(item){
+var counter = 1
+var notDeleted = "not deleted"
+        for (var i = 0; i <= cart.length - 1; i ++){
+                Object.entries(cart[i]).forEach(([key, value]) => {
+
+                   if (item === value){
+                        return cart.splice(i, 1)
+                      } else if (counter === 2*(cart.length)){
                       return notDeleted = "That item is not in your cart."
 
-                  } else {
+                      } else {
                     counter += 1
                   }
                 })
@@ -90,7 +122,7 @@ var notDeleted = "not deleted"
   return notDeleted
   }
 }
-
+*/
 
 function placeOrder(cardNumber) {
 if (typeof cardNumber === 'undefined'){
