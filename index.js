@@ -15,18 +15,27 @@ function addToCart(item) {
 
  cart.push({ itemName : item, itemPrice : price})
 
- return item
+ return `${item} has been added to your cart.`
 }
 
 function viewCart() {
   // write your code here
+  if (!cart.length) {
+    return "Your shopping cart is empty."
+  }
+
   const items = []
 
   for (let i = 0; i < cart.length; i++) {
-    items.push(`${cart[i].itemName} at $${cart[i].itemPrice}}`)
+    items.push(`${cart[i].itemName} at $${cart[i].itemPrice}`)
   }
 
-  return `In your cart, you have ${items.join(", ")}.`
+  if (cart.length === 1) {
+    return `In your cart, you have ${items.join(", ")}.`
+  }
+
+  return `In your cart, you have ${items.slice(0, -1).join(", ")}, and ${items.slice(-1)}.`
+
 }
 
 function total() {
@@ -43,7 +52,7 @@ function total() {
 function removeFromCart(item) {
   // write your code here
   for (let i = 0; i < cart.length; i++) {
-    if (cart[i].itemName === cardNumber) {
+    if (cart[i].itemName === item) {
       cart.splice(i, 1)
 
       return cart
@@ -59,7 +68,7 @@ function placeOrder(cardNumber) {
     return "Sorry, we don't have a credit card on file for you."
   }
 
-  const cost = totalCost()
+  const cost = total()
 
   cart.splice(0)
 
