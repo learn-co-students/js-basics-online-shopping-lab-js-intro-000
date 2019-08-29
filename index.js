@@ -54,12 +54,9 @@ function removeFromCart(item) {
     return "That item is not in your cart.";
   }  
     // delete property from cart object
-    for (var i = 0; i < cart.length; i++) {
-      var ele = cart[i];
-      if (cart[i].item == cart[i].itemName) { 
-        cart.splice(i , 1);
-      }
-    }
+   var idxRemove = cart.indexOf(item);
+    // getter call cart first to remove it
+    getCart().splice(idx,1);
     
 }
 
@@ -69,6 +66,8 @@ function placeOrder(cardNumber) {
   let orderPlacement = `Your total cost is $${total()}, which will be charged to the card ${cardNumber}.`;
   let no_card = "Sorry, we don't have a credit card on file for you.";
   cardNumber !== undefined ? result = orderPlacement : result = no_card;
-  cart = []; // empty the cart after order is placed
+  if (cardNumber !== undefined) { 
+    cart = []; // empty the cart after order is placed
+  }
   return result;
 }
