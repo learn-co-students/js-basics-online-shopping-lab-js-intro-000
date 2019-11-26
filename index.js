@@ -42,18 +42,19 @@ function total() {
 }
 function removeFromCart(item) {
   // write your code here
-  var anyItem = cart.some(product => product.itemName === item);
   if (cart.length !== 0) {
-    for (var i = 0; i < cart.length; i++) {
-      if (anyItem) {
-        cart.splice(i, 1);
-        return cart;
-      } else {
-        return `That item is not in your cart.`;
-      }
-    }
+     var filtered = cart.filter(function(el) {
+       return el.itemName !== item;
+     });
+     if (filtered.length !== cart.length) {
+       cart = filtered;
+       return cart;
+     } else {
+       return `That item is not in your cart.`;
+     }
    } else {
-   return `That item is not in your cart.`;
+     return `That item is not in your cart.`;
+   }
  }
 
 }
