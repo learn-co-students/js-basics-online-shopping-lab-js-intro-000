@@ -11,6 +11,13 @@ function setCart(c) {
 
 function addToCart(item) {
  // write your code here
+ function getRandomIntInclusive() {
+  min = Math.ceil(100)
+  max = Math.floor(1)
+  return Math.floor(Math.random() * (max - min + 1)) + min
+ }
+ let newItem = {itemName: item, itemPrice: getRandomIntInclusive }
+ cart.push(item)
 }
 
 function viewCart() {
