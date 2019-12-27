@@ -44,7 +44,6 @@ function removeFromCart(name) {
     for(let i =0;i<cart.length;i++){
       if(cart[i].itemName === name){
          cart.splice(i,1)
-         learn save
       }else{
         return "That item is not in your cart."
       }
@@ -57,6 +56,6 @@ function placeOrder(cardNumber) {
   }else{
     var totalCost = total()
     cart = [];
-    return `Your total cost is ${totalCost}, which will be charged to the car ${cardNumber}`
+    return `Your total cost is $${totalCost}, which will be charged to the card ${cardNumber}.`
   }
 }
