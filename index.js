@@ -41,16 +41,15 @@ return totalPrice
 }
 
 function removeFromCart(name) {
-    for(let i =0;i<cart.length;i++){
-      if(cart[i].itemName === name){
-           cart.splice(i,1)
-           return cart;
+for(let i =0;i<getCart().length;i++){
+    if(getCart()[i].itemName === name){
+        getCart().splice(i,1)
       }else{
-        return "That item is not in your cart."
+        var message = "That item is not in your cart."
+        return message
       }
     }
 }
-
 function placeOrder(cardNumber) {
   if(cardNumber === undefined){
     return "Sorry, we don't have a credit card on file for you."
