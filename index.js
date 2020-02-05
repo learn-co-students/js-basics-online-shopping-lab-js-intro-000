@@ -4,13 +4,14 @@ function getCart() {
  return cart;
 }
 
-function setCart(c) {
+function setCart() {
   cart = c;
   return cart;
 }
 
 function addToCart(item) {
- // write your code here
+ // create new object. pass in item. 
+  cart = { "itemName"
 }
 
 function viewCart() {
