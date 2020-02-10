@@ -4,15 +4,18 @@ function getCart() {
  return cart;
 }
 
-function setCart() {
+function setCart(c) {
   cart = c;
   return cart;
 }
 
 function addToCart(item) {
- // create new object. pass in item. 
-  cart = { "itemName"
+  var price = Math.floor(Math.random() * 100) + 1;
+  var Object = { itemName: item, itemPrice: price}
+  cart.push(Object);
+  return "${item} has been added to your cart."
 }
+
 
 function viewCart() {
   // write your code here
