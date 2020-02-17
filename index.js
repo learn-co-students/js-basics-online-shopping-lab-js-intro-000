@@ -53,10 +53,38 @@ function total() {
   return total;
 }
 
-function removeFromCart(item) {
+function removeFromCart(itemName) {
   // write your code here
+  var devuelve = 'That item is not in your cart.';
+
+  var searchResult;
+  for (var i=0; i<getCart().length; i++) {
+    if (getCart()[i].itemName === itemName) {searchResult = getCart()[i]};
+  }
+
+  if (searchResult) {
+    var indexOfItemToRemove = cart.indexOf(searchResult);
+    //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice
+    cart.splice(indexOfItemToRemove,1);
+
+    devuelve = searchResult;
+  }
+
+  return devuelve;
 }
 
 function placeOrder(cardNumber) {
   // write your code here
+  var devuelve;
+
+  // otra opcion... if (arguments[0] == undefined) {
+  if (cardNumber) {
+    devuelve = `Your total cost is $${total()}, which will be charged to the card ${cardNumber}.`;
+
+    cart = [];
+  } else {
+    devuelve = "Sorry, we don't have a credit card on file for you.";
+  }
+
+  return devuelve;
 }
