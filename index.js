@@ -78,7 +78,7 @@ function removeFromCart(item) {
     cart.splice(i, item)
       
     
-     if (cart[cart.length -1].itemName !=item)
+     if (cart[(cart.length) - 1 ].itemName !=item)
      return 'That item is not in your cart.'
   }
 }
