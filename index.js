@@ -71,8 +71,25 @@ return sum
 
 function removeFromCart(item) {
   // write your code here
+  for (var i = 0; i < cart.length; i++)
+  {
+ 
+    if(cart[i].itemName === item)
+    cart.splice(i, item)
+      
+    
+     if (cart[cart.length -1].itemName !=item)
+     return 'That item is not in your cart.'
+  }
 }
 
 function placeOrder(cardNumber) {
-  // write your code here
+if (cardNumber === undefined || cardNumber.length === 0 )
+return "Sorry, we don't have a credit card on file for you."
+
+var order = `Your total cost is $${total()}, which will be charged to the card ${cardNumber}.`
+cart = []
+return order
+
+
 }
