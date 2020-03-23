@@ -31,7 +31,6 @@ function viewCart() {
     }
     else {
       statement=statement+cart[i]["itemName"]+ " at $"+cart[i]["itemPrice"]+"."
-
     }
   }
   return statement
@@ -43,10 +42,28 @@ function viewCart() {
 
 function total() {
   // write your code here
+  var total=0
+  for (let i = 0; i < cart.length; i++) {
+    total+=cart[i]["itemPrice"]
+  }
+  return total
 }
 
 function removeFromCart(item) {
   // write your code here
+  var count=0
+  for (let i=0; i<cart.length; i++) {
+    if (item === cart[i]["itemName"]) {
+      cart.splice(i,1)
+      count+=1
+    }
+  }
+  if (count===cart.length) {
+    return "That item is not in your cart."
+  }
+  else {
+    return cart
+}
 }
 
 function placeOrder(cardNumber) {
