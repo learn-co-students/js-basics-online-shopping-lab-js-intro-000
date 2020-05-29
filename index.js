@@ -33,10 +33,9 @@ function viewCart() {
             current_cart.push(`${cart[i].func()},`);
           }
           current_cart.splice(-1, 0, "and");
-          // console.log(current_cart);
-        var cart_string = current_cart;
-        var final = cart_string.join(" ");
-        return final.slice(0,-1) + ".";
+          var cart_string = current_cart;
+          var final = cart_string.join(" ");
+          return final.slice(0,-1) + ".";
 
     }
 }
