@@ -10,7 +10,15 @@ function setCart(c) {
 }
 
 function addToCart(item) {
- // write your code here
+ let newItem = {
+   itemName: item,
+   itemPrice: getRandomInt(99) + 1
+ }
+ cart.push(newItem)
+ return $`{itemName} has been added to your cart.`
+}
+function getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max));
 }
 
 function viewCart() {
