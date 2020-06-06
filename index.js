@@ -22,7 +22,7 @@ function getRandomInt(max) {
 }
 
 function viewCart() {
-  if(cart === 0){
+  if(cart.length === 0){
     return 'Your Shopping cart is empty.'
   }
   for(var i = 0; i < cart.length; i++ ){
