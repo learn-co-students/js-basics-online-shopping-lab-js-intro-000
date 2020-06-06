@@ -15,14 +15,20 @@ function addToCart(item) {
    itemPrice: getRandomInt(99) + 1
  }
  cart.push(newItem)
- return $`{itemName} has been added to your cart.`
+ return `${item} has been added to your cart.`
 }
 function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max));
 }
 
 function viewCart() {
-  // write your code here
+  if(cart === 0){
+    return 'Your Shopping cart is empty.'
+  }
+  for(var i = 0; i < cart.length; i++ ){
+    var vC = [i]
+  }
+  return vC
 }
 
 function total() {
