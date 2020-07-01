@@ -18,8 +18,10 @@ function addToCart(item) {
 
 function viewCart() {
   if (cart.length > 0 && cart.length <= 2){
+
     let count = 0;
     let output = 'In your cart, you have '
+
     do {
       output +=`${cart[count].itemName} at $${cart[count].itemPrice}, and `
       count++
@@ -76,6 +78,6 @@ function placeOrder(cardNumber) {
     cart.splice(0, cart.length)
     return `Your total cost is $${total}, which will be charged to the card ${cardNumber}.`;
   }
-  
+
   return 'Sorry, we don\'t have a credit card on file for you.'
 }
