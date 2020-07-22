@@ -43,14 +43,21 @@ function removeFromCart(item) {
   // write your code here
   let i=0
   while(i<cart.length){
-    if(cart[i].itemName===item){
+    if((cart[i].itemName[0])===(item)){
       cart.splice(i,1)
       return cart
     }
+    i++
   }
   return "That item is not in your cart."
 }
 
 function placeOrder(cardNumber) {
   // write your code here
+  if(cardNumber==undefined){
+    return 'Sorry, we don\'t have a credit card on file for you.'
+  }
+  let p=total()
+  setCart([])
+  return `Your total cost is \$${p}, which will be charged to the card ${cardNumber}.`
 }
