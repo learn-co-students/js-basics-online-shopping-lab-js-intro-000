@@ -53,17 +53,17 @@ function placeOrder(cardNumber) {
 
 function orderIsGood(cardNumber) {
 
-  const allPrice = []
-  for (let i = 0; i < getCart().length; i++){
-    allPrice.push(parseInt(`${getCart()[i].itemPrice}`))
-  }
-  const cartTotal = allPrice.reduce(function(a, b) {
-    return a + b
-  }, 0 )
+  // const allPrice = []
+  // for (let i = 0; i < getCart().length; i++){
+  //   allPrice.push(parseInt(`${getCart()[i].itemPrice}`))
+  // }
+  // const cartTotal = allPrice.reduce(function(a, b) {
+  //   return a + b
+  // }, 0 )
 
-  cart = []
+  // cart = []
   
-  return( `Your total cost is $${cartTotal}, which will be charged to the card ${cardNumber}.`)
+  return( `Your total cost is $${total()}, which will be charged to the card ${cardNumber}.`)
 
 }
 
