@@ -10,46 +10,48 @@ function setCart(c) {
 }
 
 function addToCart(item) {
- // write your code here
- var newObject = {
-   "itemName": item,
-   "itemPrice": (Math.floor(Math.random()*100))
- }
+  var newObj = {
+    itemName: item,
+    itemPrice: Math.floor(Math.random()*100)
+  }
+  cart.push(newObj)
+  return (`${item} has been added to your cart.`)
 }
-var newItem ={"itemName":item,"itemPrice":(Math.floor(Math.random()*100))}
- cart.push(newItem)
- return `${item} has been added to your cart.`
 
 function viewCart() {
-  // write your code here
-  if (cart.length === 0) {
-    return ("Your shopping cart is empty.")
-  } else {
-    var cartInfo = "In your cart, you have"
-  for (let i = 0; i < cart.length; i++) {
-    if (cart.length === 1) {
-      cartInfo+= `${cart[i].itemName} at $${cart[i].itemPrice},`
-    } else if (i+1 === cart.length) {
-      cartInfo+= `and ${cart[i].itemName} at $${cart[i].itemPrice}.`
-    } else {
-      cartInfo+= `${cart[i].itemName} at $${cart[i].itemPrice},`
+  if (cart.length===0){
+    return "Your shopping cart is empty."
+  } else{
+    let cartInfo="In your cart, you have"
+    for (let i=0;i<cart.length;i++){
+      if(cart.length===1){
+        cartInfo =cartInfo + ` ${cart[i].itemName} at $${cart[i].itemPrice}.`
+      } else if (i+1===cart.length){
+        cartInfo= cartInfo + ` and ${cart[i].itemName} at $${cart[i].itemPrice}.`
+      } else {
+        cartInfo = cartInfo + ` ${cart[i].itemName} at $${cart[i].itemPrice},`
+      }
     }
+    return cartInfo
   }
-  return cartInfo
 }
 
+
 function total() {
-  // write your code here
-  var = totalCost = 0
+  var totalCost = 0
   for (let i = 0; i < cart.length; i++) {
-    var price = cart[i].itemPrice
-    totalCost+=price
+    totalCost = totalCost + cart[i].itemPrice
+    /* Or you can define a var before, like var price = cart[i].itemPrice, then
+    write totalCost = totalCost + price. That would be acceptable too, but
+    would create another variable. Could be seen as more organized? Also
+    this loops over all the things in the cart. Also you can write totalCost =
+    totalCost + cart[i].itemPrice like this totalCost+= cart[i].itemPrice, its
+    shorter notation for the same thing.*/
   }
   return totalCost
 }
 
 function removeFromCart(item) {
-  // write your code here
   for (let i = 0; i < cart.length; i++) {
     if (cart[i].itemName === item) {
       cart.splice(i, 1)
@@ -60,12 +62,19 @@ function removeFromCart(item) {
 }
 
 function placeOrder(cardNumber) {
-  // write your code here
-  if (cardNumber===undefined) {
-    return "Sorry, we don't have a credit card on file for you."
-  } else {
+if (cardNumber === undefined) {
+  return "Sorry, we don't have a credit card on file for you."
+} else {
   var totalCost = total()
-  cart = []
-  return `Your total cost is $${totalCost}, which will be charged to the card ${cardNumber}.`
-  }
+  cart = [];
+}
+return `Your total cost is $${totalCost}, which will be charged to the card ${cardNumber}.`
+}
+
+// helper functions
+function getRandomInt(min, max) {
+}
+
+function generateCartItem(itemName) {
+
 }
