@@ -19,33 +19,27 @@ function addToCart(item) {
 }
 
 function viewCart() {
-  if (cart.length===0){
+  if (cart.length === 0) {
     return "Your shopping cart is empty."
-  } else{
-    let cartInfo="In your cart, you have"
-    for (let i=0;i<cart.length;i++){
-      if(cart.length===1){
-        cartInfo =cartInfo + ` ${cart[i].itemName} at $${cart[i].itemPrice}.`
-      } else if (i+1===cart.length){
-        cartInfo= cartInfo + ` and ${cart[i].itemName} at $${cart[i].itemPrice}.`
-      } else {
-        cartInfo = cartInfo + ` ${cart[i].itemName} at $${cart[i].itemPrice},`
-      }
+  } else if (cart.length === 1) {
+    return `In your cart, you have ${cart[0].itemName} at $${cart[0].itemPrice}.`
+  } else if (cart.length === 2) {
+    return `In your cart, you have ${cart[0].itemName} at $${cart[0].itemPrice}, and ${cart[1].itemName} at $${cart[1].itemPrice}.`
+  } else {
+    var myString = "In your cart, you have "
+    for(var i = 0; i < cart.length - 1; i++) {
+      myString = myString + `${cart[i].itemName} at $${cart[i].itemPrice}, `
     }
-    return cartInfo
+    return myString + `and ${cart[cart.length - 1].itemName} at $${cart[cart.length - 1].itemPrice}.`
   }
 }
-
 
 function total() {
   var totalCost = 0
   for (let i = 0; i < cart.length; i++) {
     totalCost = totalCost + cart[i].itemPrice
-    /* Or you can define a var before, like var price = cart[i].itemPrice, then
-    write totalCost = totalCost + price. That would be acceptable too, but
-    would create another variable. Could be seen as more organized? Also
-    this loops over all the things in the cart. Also you can write totalCost =
-    totalCost + cart[i].itemPrice like this totalCost+= cart[i].itemPrice, its
+    /* Also you can write totalCost =
+    totalCost + cart[i].itemPrice like totalCost+= cart[i].itemPrice, its
     shorter notation for the same thing.*/
   }
   return totalCost
@@ -65,10 +59,10 @@ function placeOrder(cardNumber) {
 if (cardNumber === undefined) {
   return "Sorry, we don't have a credit card on file for you."
 } else {
-  var totalCost = total()
+  var totals = total()
   cart = [];
 }
-return `Your total cost is $${totalCost}, which will be charged to the card ${cardNumber}.`
+return `Your total cost is $${totals}, which will be charged to the card ${cardNumber}.`
 }
 
 // helper functions
