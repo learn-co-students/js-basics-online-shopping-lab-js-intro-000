@@ -7,30 +7,37 @@ function addToCart(name){
   cart.push(item)
   return `${item.itemName} has been added to your cart.`
   }
-
-
 function viewCart(){
-var cartString='In your cart, you have'
+  var outputSentence='In your cart, you have'
+
+  for(let i=0;i<cart.length;i++){
+
 if (cart.length===1){
-  cartString=`${cartString} ${cart[0].itemName} at $${cart[0].itemPrice}.`
-}
-else{
-for(let i=0;i<cart.length;i++){
+  outputSentence=`${outputSentence} ${cart[0].itemName} at $${cart[0].itemPrice}.`
+}else{
     if(cart.length-1===i){
-    cartString=`${cartString} and ${cart[i].itemName} at $${cart[i].itemPrice}.`
-  } else {
-    cartString=`${cartString} ${cart[i].itemName} at $${cart[i].itemPrice},`
+      outputSentence=`${outputSentence} and ${cart[i].itemName} at $${cart[i].itemPrice}.`
+    }else
+    {
+      outputSentence=`${outputSentence} ${cart[i].itemName} at $${cart[i].itemPrice},`
+    }
   }
-}}
-if (cart.length===0){
-  return 'Your shopping cart is empty.'
 }
-return cartString
+
+  if(cart.length===0){
+    return "Your shopping cart is empty."
   }
+  return outputSentence
+}
 
 
 function total(){
+var totalNumber=0
+for(let i=0;i<cart.length;i++){
+  totalNumber= totalNumber + cart[i].itemPrice
+}
 
+return totalNumber
 }
 function removeFromCart(){
 
