@@ -39,8 +39,18 @@ for(let i=0;i<cart.length;i++){
 
 return totalNumber
 }
-function removeFromCart(){
+function removeFromCart(nameOfItemRemoved){
 
+for (let i = 0; i < cart.length; i++){
+  if(cart[i].itemName===nameOfItemRemoved){
+    cart.splice(i,1)
+}else{
+  if(cart[i].itemName != nameOfItemRemoved){
+    return "That item is not in your cart."
+  }
+}
+  }
+return cart
 }
 function placeOrder(){
 
