@@ -41,11 +41,13 @@ function viewCart() {
 
 function total() {
   // write your code here
-  let priceTotal = 0
+  let priceTotal = []
  for(let i = 0; i < cart.length; i++) {
-    let priceTotal = 0 + cart[i].itemPrice
+    priceTotal.push(cart[i].itemPrice)
   }
-  return priceTotal 
+  return priceTotal.reduce(function(a, b){
+  	return a + b;
+  }, 0)
 }
 
 function removeFromCart(item) {
