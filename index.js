@@ -55,18 +55,18 @@ function removeFromCart(item) {
  	if (cart[i].itemName === item) {
  		cart.splice(i, 1)
  		return cart 
- 	} else {
-      return "That item is not in your cart."
+ 	} else if (cart[i].itemName !== item) {
     }
   } 
+   	return "That item is not in your cart.";
 }
 
 function placeOrder(cardNumber) {
- if (!!cardNumber || cardNumber === '') {
- 	let charge = total()
-    cart.splice(0, cart.length)
-    return `Your total cost is $${charge}, which will be charged to the card ${cardNumber}.`
-  } else if (!cardNumber || !cardNumber === ''){
-  return "Sorry, we don't have a credit card on file for you."
+  if (cardNumber) {
+ 	let charge = total();
+    cart.splice(0, cart.length);
+    return `Your total cost is $${charge}, which will be charged to the card ${cardNumber}.`;
+  } else {
+    return "Sorry, we don't have a credit card on file for you.";
   }
 }
