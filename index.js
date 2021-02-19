@@ -66,7 +66,7 @@ function placeOrder(cardNumber) {
  	let charge = total()
     cart.splice(0, cart.length)
     return `Your total cost is $${charge}, which will be charged to the card ${cardNumber}.`
-  } else {
+  } else if (!cardNumber || !cardNumber === ''){
   return "Sorry, we don't have a credit card on file for you."
   }
 }
