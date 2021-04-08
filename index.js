@@ -55,12 +55,17 @@ function removeFromCart(item) {
     if (cart[i].itemName === item) {
       cart.splice(i, 1);
       console.log(cart);
-    } else {
-      return "That item is not in your cart."
     }
-  }
+}
+      return "That item is not in your cart."
 }
 
 function placeOrder(cardNumber) {
-  // write your code here
+  if (cardNumber === undefined) {
+    return "Sorry, we don't have a credit card on file for you."
+  } else if (typeof cardNumber === "number"){
+    let cartPrice = [total()]
+    cart.splice(0);
+    return `Your total cost is $${cartPrice}, which will be charged to the card ${cardNumber}.`
+  }
 }
