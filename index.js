@@ -1,30 +1,72 @@
-var cart = [];
-
-function getCart() {
- return cart;
-}
-
-function setCart(c) {
-  cart = c;
-  return cart;
-}
-
-function addToCart(item) {
- // write your code here
-}
-
 function viewCart() {
-  // write your code here
+  var cartList = []; 
+  if (cart.length === 0) {
+    return 'Your shopping cart is empty.'
+  }
+  for (let i = 0; i < cart.length; i++ ) {
+    var object = cart[i];
+    var key = Object.keys(object)[0];
+    var price = object[key];
+    cartList.push(`${key} at $${price}`)
+  }
+  
+   if (cart.length === 1) {
+    return `In your cart, you have ${cartList}.`
+  } else if (cart.length === 2) {
+    return `In your cart, you have ${cartList[0]} and ${cartList[1]}.`
+  } else {
+    return `In your cart, you have ${cartList.slice(0,-1).join(', ')}, and ${cartList[cartList.length - 1]}.`
+  }
 }
+//viewCart()
 
 function total() {
-  // write your code here
+  //var totalPrice = [];
+  var sum = 0;
+  // iterates through the cart array, and returns the current total value of the items in the cart.
+  for (var i = 0; i < cart.length; i++) {
+    var object = cart[i];
+    var key = Object.keys(object)[0];
+    var price = object[key];
+    sum += price; //VERY USEFUL
+// The Reduce method works as well, but is sloppier.    
+    //totalPrice.push(price);
+    //console.log(totalPrice);
+    //var sum = totalPrice.reduce((a, b) => a + b, 0);
+    //console.log(sum);
+  }
+  return sum;
 }
+total()
 
 function removeFromCart(item) {
-  // write your code here
+  /* If the cart does not contain a matching item, the function should print out That item is not in your cart. and return the unchanged cart*/
+  /* If the item is present in the cart, the function should remove the object from the cart and then return the updated cart  */
+  //function should loop through cart checking to see if item matches 
+  // an object key in cart. if it evaluates to true, remove item and 
+  //return new array.
+  //Otherwise, it should log "That item is not in your cart."
+  for (let i = 0; i < cart.length; i++) {
+    var object = cart[i];
+    var key = Object.keys(object)[0];
+    if (object.hasOwnProperty(item)) {
+      cart.splice(i, 1);
+      return cart;
+    }
+  }
+  console.log("That item is not in your cart.");
 }
+removeFromCart('bananas')
 
 function placeOrder(cardNumber) {
-  // write your code here
+  if (isNaN(cardNumber)) {
+    console.log("Sorry, we don't have a credit card on file for you.")
+  } else {
+    total();
+    console.log(`Your total cost is $${total()}, which will be charged to the card ${cardNumber}.`);
+    // cart.length = 0   <--(one way to do delete the array)
+    return cart.splice(0, cart.length)
+    /* Returns a list of items in the cart as it gets deleted: AKA a receipt! */  
+  }
 }
+placeOrder(1287834706235)
