@@ -9,20 +9,25 @@ function setCart(c) {
   return cart;
 }
 
+var groceries = {}
+
 function addToCart(item) {
- // write your code here
+  console.log(Math.floor(Math.random(100)));
+  console.log(itemName);
+  console.log(cart);
+  { itemName: item, itemPrice: Math.floor(Math.random(100)) } 
 }
 
 function viewCart() {
-  // write your code here
+
 }
 
 function total() {
-  // write your code here
+
 }
 
 function removeFromCart(item) {
-  // write your code here
+
 }
 
 function placeOrder(cardNumber) {
